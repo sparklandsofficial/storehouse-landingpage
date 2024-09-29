@@ -6,13 +6,13 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ChevronLeft, ChevronRight } from "lucide-react"; // 引入 Lucide 圖標
 
-import Link from "next/link";
 import { cabinetSizes } from "@/app/data/cabinetSizes";
 import React from "react";
 
 export default function BranchDetail({ params }: { params: { id: string } }) {
   // 這裡應該根據 id 獲取分店詳情
   // 為了示例，我們使用硬編碼的數據
+  console.log(params);
   const branchInfo = {
     name: "松山延吉店",
     address: "台北市松山區延吉街7-1號B1",

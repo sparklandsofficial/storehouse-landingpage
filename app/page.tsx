@@ -1,6 +1,5 @@
 "use client";
 
-import { Download } from "lucide-react";
 import Image from "next/image";
 import FAQSection from "./components/faq";
 
