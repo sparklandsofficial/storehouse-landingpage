@@ -13,7 +13,7 @@ export interface CabinetSize {
 export const cabinetSizes: CabinetSize[] = [
   {
     type: "S上櫃",
-    image: "/images/S-top.png",
+    image: "/images/s-top.png",
     sizes: [
       {
         height: "91.5cm",
