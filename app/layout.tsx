@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="zh-TW">
       <body className={inter.className}>
         <Navigation />
-        <main className='mt-[70px] relative'>{children}</main>
+        <main className='mt-[70px] relative max-w-[100vw] overflow-x-hidden'>{children}</main>
         <Footer />
       </body>
     </html>

@@ -122,7 +122,7 @@ export default function FAQSection({ isAll }: { isAll: boolean }) {
         {
           !isAll && (
             <div className="text-center mt-8">
-              <button className="text-[#8C734B] hover:underline transition duration-300 ease-in-out">
+              <button className="text-[#8C734B] text-2xl border-b-2 border-[#8C734B] px-2 py-1 hover:underline transition duration-300 ease-in-out">
                 查看更多常見問題
               </button>
             </div>

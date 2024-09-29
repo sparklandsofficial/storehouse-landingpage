@@ -113,7 +113,7 @@ export default function Home() {
               <img
                 src="/images/phone-bg.png"
                 alt="App Screenshot"
-                className="mx-auto max-w-[400px]"
+                className="mx-auto max-w-[100%] md:max-w-[400px]"
               />
             </div>
 
@@ -183,8 +183,12 @@ export default function Home() {
       {/* Tutorial Section */}
       <section className="py-16 bg-[#f7f7f5]">
         <div className="container mx-auto px-4">
-          <h2 className="text-4xl font-bold text-center mb-12">
+          <h2 className="text-4xl font-bold text-center mb-12 md:block hidden">
             簡單操作4步驟 租倉只需5分鐘
+          </h2>
+
+          <h2 className="text-4xl font-bold text-center mb-12 md:hidden block">
+            簡單操作4步驟<br />租倉只需5分鐘
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-0">
@@ -243,9 +247,9 @@ export default function Home() {
       <section className="relative pt-16 bg-[#f7f7f5] overflow-hidden">
         <div className="container mx-auto px-4 flex flex-col md:flex-row items-center">
           <div className="w-full md:w-1/2 text-left text-[#483729] mb-8 md:mb-0">
-            <h2 className="font-bold mb-4 text-4xl md:text-5xl">現在就下載</h2>
-            <p className="mb-4 text-2xl md:text-3xl">星域智空間APP</p>
-            <div className="flex justify-start space-x-4">
+            <h2 className="font-bold mb-4 text-4xl md:text-5xl text-center md:text-left">現在就下載</h2>
+            <p className="mb-4 text-2xl md:text-3xl text-center md:text-left">星域智空間APP</p>
+            <div className="flex justify-center md:justify-start space-x-4">
               <a
                 href="#"
                 className="hover:opacity-80 transition-opacity duration-300"

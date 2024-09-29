@@ -8,7 +8,7 @@ export default function Footer() {
       className="bg-[#F2EFE9] pt-4 border-t border-[#D3CEC4]"
     >
       <div className="container mx-auto px-4">
-        <div className="flex flex-wrap justify-between items-center">
+        <div className="flex flex-wrap justify-between items-start">
           {/* Logo and Company Name */}
           <div className="flex flex-col items-center space-x-2">
             <Image
@@ -35,11 +35,19 @@ export default function Footer() {
 
           {/* Resource Center Links */}
 
+          <div className="mt-0 text-left text-[#483729]">
+            <h3 className="font-semibold mb-2">聯絡我們</h3>
+            <p>電話: 0800-123-456</p>
+            <p>電子郵件: info@sparkspace.com</p>
+            <p>地址: 台北市信義區信義路5段7號</p>
+          </div>
+
           {/* Social Media Links */}
-          <div className="flex space-x-2">
+          <div className="flex flex-col">
             {/* <Link href="#" aria-label="Line">
               <Image src="/images/line-icon.png" alt="Line" width={24} height={24} />
             </Link> */}
+            <h3 className="font-semibold mb-2">社群連結</h3>
             <Link href="#" aria-label="Facebook">
               <Image
                 src="/images/facebook.png"
