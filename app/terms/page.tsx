@@ -43,7 +43,7 @@ export default function TermsOfService() {
       <section className="mb-8">
         <h2 className="text-2xl font-semibold mb-4 text-[#8C734B]">6. 免責聲明</h2>
         <p className="mb-4">
-          我們的服務按"原樣"提供，不提供任何明示或暗示的保證。星域智空間不對任何直接、間接、附帶、特殊或後果性損害負責。
+          我們的服務按原樣提供，不提供任何明示或暗示的保證。星域智空間不對任何直接、間接、附帶、特殊或後果性損害負責。
         </p>
       </section>
 
