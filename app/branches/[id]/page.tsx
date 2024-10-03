@@ -55,7 +55,8 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
           </div>
           <div className="flex justify-start space-x-4 mt-8">
             <a
-              href="#"
+              href={process.env.NEXT_PUBLIC_IOS_APP_URL}
+              target="_blank"
               className="hover:opacity-80 transition-opacity duration-300"
             >
               <Image
@@ -67,7 +68,8 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
               />
             </a>
             <a
-              href="#"
+              href={process.env.NEXT_PUBLIC_ANDROID_APP_URL}
+              target="_blank"
               className="hover:opacity-80 transition-opacity duration-300"
             >
               <Image

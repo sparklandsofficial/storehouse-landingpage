@@ -84,7 +84,8 @@ export default function Home() {
             </div>
             <div className="flex justify-start space-x-4">
               <a
-                href="#"
+                href={process.env.NEXT_PUBLIC_IOS_APP_URL}
+                target="_blank"
                 className="hover:opacity-80 transition-opacity duration-300"
               >
                 <Image
@@ -96,7 +97,8 @@ export default function Home() {
                 />
               </a>
               <a
-                href="#"
+                href={process.env.NEXT_PUBLIC_ANDROID_APP_URL}
+                target="_blank"
                 className="hover:opacity-80 transition-opacity duration-300"
               >
                 <Image
