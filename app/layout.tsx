@@ -6,8 +6,8 @@ import Footer from './components/footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: '我們的網站',
-  description: '歡迎來到我們的網站',
+  title: '星域智空間 | 您的收納小管家',
+  description: '星域智空間，您的收納小管家',
 }
 
 export default function RootLayout({
