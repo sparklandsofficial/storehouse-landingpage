@@ -66,7 +66,7 @@ export default function Navigation() {
       </li>
       <li>
         <a
-          href={process.env.NEXT_PUBLIC_IOS_APP_URL}
+          href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL}
           target="_blank"
           className="bg-[#FF9E18] text-white px-6 py-1 rounded-full hover:bg-orange-500 transition-colors duration-300 ease-in-out"
         >

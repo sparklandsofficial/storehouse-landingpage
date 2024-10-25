@@ -41,7 +41,7 @@ export default function Home() {
               </p>
               <div className="flex justify-center">
                 <a
-                  href={process.env.NEXT_PUBLIC_IOS_APP_URL}
+                  href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL}
                   target="_blank"
                   className="md:mt-12 mt-4 md:px-8 md:py-3 px-4 py-2 bg-[#FF9E18] text-white md:text-2xl text-[3vw] rounded-full hover:bg-orange-500 md:w-[200px] w-[150px] transition duration-300 ease-in-out text-center"
                 >
@@ -78,7 +78,7 @@ export default function Home() {
             </p>
             <div className="flex justify-center space-x-4">
               <a
-                href={process.env.NEXT_PUBLIC_IOS_APP_URL}
+                href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL}
                 target="_blank"
                 className="hover:opacity-80 transition-opacity duration-300"
               >
@@ -91,7 +91,7 @@ export default function Home() {
                 />
               </a>
               <a
-                href={process.env.NEXT_PUBLIC_ANDROID_APP_URL}
+                href={process.env.NEXT_PUBLIC_ANDROID_DOWNLOAD_URL}
                 target="_blank"
                 className="hover:opacity-80 transition-opacity duration-300"
               >
@@ -257,7 +257,7 @@ export default function Home() {
             <p className="mb-4 text-2xl md:text-3xl text-center md:text-left">星域智空間APP</p>
             <div className="flex justify-center md:justify-start space-x-4">
               <a
-                href={process.env.NEXT_PUBLIC_IOS_APP_URL}
+                href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL}
                 target="_blank"
                 className="hover:opacity-80 transition-opacity duration-300"
               >
@@ -270,7 +270,7 @@ export default function Home() {
                 />
               </a>
               <a
-                href={process.env.NEXT_PUBLIC_ANDROID_APP_URL}
+                href={process.env.NEXT_PUBLIC_ANDROID_DOWNLOAD_URL}
                 target="_blank"
                 className="hover:opacity-80 transition-opacity duration-300"
               >
