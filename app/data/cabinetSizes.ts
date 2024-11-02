@@ -13,7 +13,7 @@ export interface CabinetSize {
 export const cabinetSizes: CabinetSize[] = [
   {
     type: "S上櫃",
-    image: "/images/s-top.png",
+    image: "/images/size/s-top.png",
     sizes: [
       {
         height: "91.5cm",
@@ -26,7 +26,7 @@ export const cabinetSizes: CabinetSize[] = [
   },
   {
     type: "S下櫃",
-    image: "/images/s-bottom.png",
+    image: "/images/size/s-bottom.png",
     sizes: [
       {
         height: "121.5cm",
@@ -39,7 +39,7 @@ export const cabinetSizes: CabinetSize[] = [
   },
   {
     type: "M全櫃",
-    image: "/images/m-full.png",
+    image: "/images/size/m-full.jpg",
     sizes: [
       {
         height: "213.15cm",
@@ -52,7 +52,7 @@ export const cabinetSizes: CabinetSize[] = [
   },
   {
     type: "L全櫃",
-    image: "/images/l-full.png",
+    image: "/images/size/l-full.jpg",
     sizes: [
       {
         height: "213.1cm",
@@ -64,8 +64,21 @@ export const cabinetSizes: CabinetSize[] = [
     ],
   },
   {
-    type: "特殊規格",
-    image: "/images/special.png",
+    type: "XL全櫃",
+    image: "/images/size/xl-full.jpg",
+    sizes: [
+      {
+        height: "213.1cm",
+        width: "167.5cm",
+        depth: "109.5cm",
+        volume: "35材積",
+        monthlyRent: "1,480元",
+      },
+    ],
+  },
+  {
+    type: "XXL全櫃",
+    image: "/images/size/xxl-full.jpg",
     sizes: [
       {
         height: "213.1cm",

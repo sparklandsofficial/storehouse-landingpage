@@ -14,7 +14,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
   // 為了示例，我們使用硬編碼的數據
   console.log(params);
   const branchInfo = {
-    name: "松山延吉店",
+    name: "台北延吉店",
     address: "台北市松山區延吉街7-1號B1",
     phone: "00000000",
     size: "寬160 深150 高215cm",
@@ -30,7 +30,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
       <div className="flex flex-col md:flex-row gap-8">
         <div className="md:w-2/3">
           <Image
-            src="/images/branch-1.png"
+            src="/images/slide-1.png"
             alt={branchInfo.name}
             width={800}
             height={600}
@@ -38,7 +38,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
           />
         </div>
         <div className="w-full md:w-1/2 p-6">
-          <h3 className="text-3xl md:text-4xl font-bold mb-4">松山延吉店</h3>
+          <h3 className="text-3xl md:text-4xl font-bold mb-4">台北延吉店</h3>
           <div className="text-[#8C734B] text-lg md:text-xl">
             <p className="mb-2">
               <strong>地址：</strong>台北市松山區延吉街7-1號B1
@@ -85,7 +85,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
       </div>
 
       <h2 className="text-4xl font-bold my-20 text-center">倉庫尺寸</h2>
-      <div className="mt-12">
+      <div className="mt-12 md:w-1/2 mx-auto">
         <Carousel
           showArrows={true}
           showThumbs={false}
@@ -96,7 +96,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
                 type="button"
                 onClick={onClickHandler}
                 title={label}
-                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-r-md"
+                className="absolute left-0 top-1/3 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-r-md"
               >
                 <ChevronLeft className="w-8 h-8 text-white" />
               </button>
@@ -108,7 +108,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
                 type="button"
                 onClick={onClickHandler}
                 title={label}
-                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-l-md"
+                className="absolute right-0 top-1/3 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-l-md"
               >
                 <ChevronRight className="w-8 h-8 text-white" />
               </button>
@@ -116,8 +116,8 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
           }
         >
           {cabinetSizes.map((cabinet, index) => (
-            <div className="flex flex-col md:flex-row gap-8" key={index}>
-              <div className="md:w-1/2">
+            <div className="flex flex-col md:flex-col gap-8" key={index}>
+              <div className="">
                 <Image
                   src={cabinet.image}
                   alt="倉庫尺寸圖"
@@ -125,8 +125,8 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
                   height={300}
                 />
               </div>
-              <div className="md:w-1/2">
-                <table className="w-full border-collapse border border-[#8C734B] text-[#8C734B] text-md">
+              <div className="">
+                {/* <table className="w-full border-collapse border border-[#8C734B] text-[#8C734B] text-md">
                   <React.Fragment key={index}>
                     <thead>
                       <tr className="bg-[#8C734B]">
@@ -185,7 +185,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
                       ))}
                     </tbody>
                   </React.Fragment>
-                </table>
+                </table> */}
                 <p className="mt-4 text-lg text-[#8C734B] text-left">
                   上表尺寸因施工因素，可能會有正負5％之施工誤差。
                   <br />
@@ -239,31 +239,38 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
           >
             <Image
               src="/images/slide-1.png"
-              alt="松山延吉店"
+              alt="台北延吉店"
               width={600}
               height={400}
-              className="w-full h-auto"
+              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
             />
             <Image
-              src="/images/slide-1.png"
-              alt="松山延吉店"
+              src="/images/slide-2.jpg"
+              alt="台北延吉店"
               width={600}
               height={400}
-              className="w-full h-auto"
+              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
             />
             <Image
-              src="/images/slide-1.png"
-              alt="松山延吉店"
+              src="/images/slide-3.jpg"
+              alt="台北延吉店"
               width={600}
               height={400}
-              className="w-full h-auto"
+              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
             />
             <Image
-              src="/images/slide-1.png"
-              alt="松山延吉店"
+              src="/images/slide-4.jpg"
+              alt="台北延吉店"
               width={600}
               height={400}
-              className="w-full h-auto"
+              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+            />
+            <Image
+              src="/images/slide-5.jpg"
+              alt="台北延吉店"
+              width={600}
+              height={400}
+              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
             />
             {/* 可以添加更多照片 */}
           </Carousel>

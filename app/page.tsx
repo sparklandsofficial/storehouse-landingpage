@@ -214,13 +214,13 @@ export default function Home() {
               {
                 icon: "/images/step-3.png",
                 step: "STEP 3",
-                title: "點擊「產生臨時密碼」",
+                title: "點擊「開啟櫃位」",
                 description: "確認空間大小",
               },
               {
                 icon: "/images/step-4.png",
                 step: "STEP 4",
-                title: "點擊「我要租用」",
+                title: "點擊「加入購物車，結帳」",
                 description: "完成簽約流程",
               },
             ].map((item, index) => (

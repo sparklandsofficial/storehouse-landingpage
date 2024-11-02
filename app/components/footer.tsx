@@ -48,14 +48,32 @@ export default function Footer() {
               <Image src="/images/line-icon.png" alt="Line" width={24} height={24} />
             </Link> */}
             <h3 className="font-semibold mb-2">社群連結</h3>
-            <Link href="#" aria-label="Facebook">
-              <Image
-                src="/images/facebook.png"
-                alt="Facebook"
-                width={24}
-                height={24}
-              />
-            </Link>
+            <div className="flex space-x-2">
+              <a
+                target="_blank"
+                href="https://www.facebook.com/profile.php?id=61563342058017"
+                aria-label="Facebook"
+              >
+                <Image
+                  src="/images/facebook.png"
+                  alt="Facebook"
+                  width={24}
+                  height={24}
+                />
+              </a>
+              <a
+                target="_blank"
+                href="https://lin.ee/sDwC1pV"
+                aria-label="Line"
+              >
+                <Image
+                  src="/images/line.png"
+                  alt="Facebook"
+                  width={24}
+                  height={24}
+                />
+              </a>
+            </div>
             {/* <Link href="#" aria-label="Instagram">
               <Image src="/images/instagram-icon.png" alt="Instagram" width={24} height={24} />
             </Link> */}
