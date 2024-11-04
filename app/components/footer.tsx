@@ -38,7 +38,7 @@ export default function Footer() {
           <div className="mt-0 text-left text-[#483729]">
             <h3 className="font-semibold mb-2">聯絡我們</h3>
             <p>電話: (02)8177-7085</p>
-            <p>電子郵件: info@sparkspace.com</p>
+            <p>電子郵件: spark@sparklands.co</p>
             <p>地址: 台北市松山區延吉街7-1號B1(屈臣氏後方)</p>
           </div>
 
