@@ -21,18 +21,63 @@ export default function Home() {
 
   return (
     <div className="bg-[#f7f7f5]">
-      <Image
-        src="/images/hero-bg.png"
-        alt="Hero Background"
-        width={1920}
-        height={1320}
-        className="w-full h-[60vw] absolute top-[-70px] left-0 z-0 blur-sm"
-      />
+      {/* Hero Background Carousel */}
+      <div className="absolute w-full left-0 z-0">
+        <Carousel
+          showArrows={true}
+          showStatus={false}
+          showThumbs={false}
+          infiniteLoop={true}
+          autoPlay={true}
+          interval={5000}
+          transitionTime={500}
+          showIndicators={false}
+          renderArrowPrev={(onClickHandler, hasPrev, label) =>
+            hasPrev && (
+              <button
+                type="button"
+                onClick={onClickHandler}
+                title={label}
+                className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-r-md"
+              >
+                <ChevronLeft className="w-8 h-8 text-white" />
+              </button>
+            )
+          }
+          renderArrowNext={(onClickHandler, hasNext, label) =>
+            hasNext && (
+              <button
+                type="button"
+                onClick={onClickHandler}
+                title={label}
+                className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-l-md"
+              >
+                <ChevronRight className="w-8 h-8 text-white" />
+              </button>
+            )
+          }
+        >
+          <Image
+            src="/images/promotion-1.png"
+            alt="Hero Background 1"
+            width={4000}
+            height={2250}
+            className="w-full md:mt-[-70px]"
+          />
+          <Image
+            src="/images/promotion-2.png"
+            alt="Hero Background 2"
+            width={4000}
+            height={2250}
+            className="w-full md:mt-[-70px]"
+          />
+        </Carousel>
+      </div>
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <section className="relative z-[1] h-[calc(60vw-70px)]">
           <div className="container mx-auto h-full flex items-center relative z-10  justify-center md:justify-start">
-            <div className="text-white md:mt-[-15vh] md:ml-[5vw] flex flex-col items-center">
+            {/* <div className="text-white md:mt-[-15vh] md:ml-[5vw] flex flex-col items-center">
               <h1 className="md:text-[4vw] text-[8vw] font-bold mb-2 text-[#483729]">
                 開幕優惠
               </h1>
@@ -44,7 +89,7 @@ export default function Home() {
                   see more
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
 
@@ -186,13 +231,10 @@ export default function Home() {
               </h3>
               <div className="text-[#8C734B] text-lg md:text-xl">
                 <p className="mb-2">
-                  <strong>地址：</strong>台北市松山區延吉街7-1號B1
+                  <strong>地址：</strong>台北市松山區延吉街7-1號B1（屈臣氏後方）
                 </p>
                 <p className="mb-2">
-                  <strong>服務電話：</strong>00000000
-                </p>
-                <p className="mb-2">
-                  <strong>貨梯尺寸：</strong>寬160 深150 高215cm
+                  <strong>服務電話：</strong>(02)8177-7085
                 </p>
                 <p className="mb-2">
                   <strong>進出時間：</strong>24小時

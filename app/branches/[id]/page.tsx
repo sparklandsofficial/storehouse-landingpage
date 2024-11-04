@@ -15,9 +15,8 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
   console.log(params);
   const branchInfo = {
     name: "台北延吉店",
-    address: "台北市松山區延吉街7-1號B1",
-    phone: "00000000",
-    size: "寬160 深150 高215cm",
+    address: "台北市松山區延吉街7-1號B1（屈臣氏後方）",
+    phone: "(02)8177-7085",
     hours: "24小時",
   };
 
@@ -27,7 +26,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
 
   return (
     <div className="container mx-auto px-4 md:pt-20 pt-10">
-      <div className="flex flex-col md:flex-row gap-8">
+      <div className="flex flex-col md:flex-row gap-8 items-center">
         <div className="md:w-2/3">
           <Image
             src="/images/slide-1.png"
@@ -41,13 +40,10 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
           <h3 className="text-3xl md:text-4xl font-bold mb-4">台北延吉店</h3>
           <div className="text-[#8C734B] text-lg md:text-xl">
             <p className="mb-2">
-              <strong>地址：</strong>台北市松山區延吉街7-1號B1
+              <strong>地址：</strong>{branchInfo.address}
             </p>
             <p className="mb-2">
-              <strong>服務電話：</strong>00000000
-            </p>
-            <p className="mb-2">
-              <strong>貨梯尺寸：</strong>寬160 深150 高215cm
+              <strong>服務電話：</strong>{branchInfo.phone}
             </p>
             <p className="mb-2">
               <strong>進出時間：</strong>24小時

@@ -24,15 +24,15 @@ export default function Home() {
       <Image
         src="/images/hero-bg.png"
         alt="Hero Background"
-        width={1920}
-        height={1320}
-        className="w-full h-[60vw] absolute top-[-70px] left-0 z-0 blur-sm opacity-70 md:opacity-100"
+        width={8000}
+        height={4167}
+        className="w-full absolute top-[-70px] left-0 z-0"
       />
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <section className="relative z-[1] h-[calc(60vw-70px)]">
           <div className="container mx-auto h-full flex items-center relative z-10  justify-center md:justify-start">
-            <div className="text-white md:mt-[-15vh] md:ml-[5vw] flex flex-col items-center">
+            {/* <div className="text-white md:mt-[-15vh] md:ml-[5vw] flex flex-col items-center">
               <h1 className="md:text-[4vw] text-[8vw] font-bold mb-2 text-[#483729]">
                 開幕優惠
               </h1>
@@ -48,7 +48,7 @@ export default function Home() {
                   APP下載
                 </a>
               </div>
-            </div>
+            </div> */}
           </div>
         </section>
 
@@ -157,9 +157,9 @@ export default function Home() {
               { text: "無接觸\n租倉流程", key: "無接觸" },
               { text: "多元化\n櫃型選擇", key: "多元化" },
               { text: "高彈性\n租期合約", key: "高彈性" },
-              { text: "24HR\n零死角監控", key: "24HR" },
-              { text: "24HR\n進出取貨", key: "24HR" },
-              { text: "24HR\n溫度控管", key: "24HR" },
+              { text: "零死角\n櫃內監控", key: "零死角" },
+              { text: "免鑰匙\n進出取貨", key: "免鑰匙" },
+              { text: "55%\n濕度管控", key: "55%" },
             ].map((feature, index) => (
               <div
                 key={index}
