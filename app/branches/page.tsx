@@ -156,97 +156,99 @@ export default function Home() {
               </a>
             </div>
           </div>
-
-          <div className="flex flex-col md:flex-row md:space-x-20">
-            <div className="w-full md:w-1/2 mb-8 md:mb-0">
-              <Carousel
-                showArrows={true}
-                showThumbs={false}
-                infiniteLoop
-                renderArrowPrev={(onClickHandler, hasPrev, label) =>
-                  hasPrev && (
-                    <button
-                      type="button"
-                      onClick={onClickHandler}
-                      title={label}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-r-md"
-                    >
-                      <ChevronLeft className="w-8 h-8 text-white" />
-                    </button>
-                  )
-                }
-                renderArrowNext={(onClickHandler, hasNext, label) =>
-                  hasNext && (
-                    <button
-                      type="button"
-                      onClick={onClickHandler}
-                      title={label}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-l-md"
-                    >
-                      <ChevronRight className="w-8 h-8 text-white" />
-                    </button>
-                  )
-                }
-              >
-                <Image
-                  src="/images/slide-1.png"
-                  alt="台北延吉店"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-                />
-                <Image
-                  src="/images/slide-2.jpg"
-                  alt="台北延吉店"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-                />
-                <Image
-                  src="/images/slide-3.jpg"
-                  alt="台北延吉店"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-                />
-                <Image
-                  src="/images/slide-4.jpg"
-                  alt="台北延吉店"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-                />
-                <Image
-                  src="/images/slide-5.jpg"
-                  alt="台北延吉店"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-                />
-              </Carousel>
-            </div>
-            <div className="w-full md:w-1/2 p-6">
-              <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                台北延吉店
-              </h3>
-              <div className="text-[#8C734B] text-lg md:text-xl">
-                <p className="mb-2">
-                  <strong>地址：</strong>台北市松山區延吉街7-1號B1（屈臣氏後方）
-                </p>
-                <p className="mb-2">
-                  <strong>服務電話：</strong>(02)8177-7085
-                </p>
-                <p className="mb-2">
-                  <strong>進出時間：</strong>24小時
-                </p>
-                <Link href="/branches/1" passHref>
-                  <div className="bg-[#FF9E18] text-white text-center px-6 py-2 rounded-full hover:bg-orange-500 transition-colors duration-300 ease-in-out mt-8 inline-block">
-                    查看更多
-                  </div>
-                </Link>
+          <Link href="/branches/1">
+            <div className="flex flex-col md:flex-row md:space-x-20">
+              <div className="w-full md:w-1/2 mb-8 md:mb-0">
+                <Carousel
+                  showArrows={true}
+                  showThumbs={false}
+                  infiniteLoop
+                  // renderArrowPrev={(onClickHandler, hasPrev, label) =>
+                  //   hasPrev && (
+                  //     <button
+                  //       type="button"
+                  //       onClick={onClickHandler}
+                  //       title={label}
+                  //       className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-r-md"
+                  //     >
+                  //       <ChevronLeft className="w-8 h-8 text-white" />
+                  //     </button>
+                  //   )
+                  // }
+                  // renderArrowNext={(onClickHandler, hasNext, label) =>
+                  //   hasNext && (
+                  //     <button
+                  //       type="button"
+                  //       onClick={onClickHandler}
+                  //       title={label}
+                  //       className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-l-md"
+                  //     >
+                  //       <ChevronRight className="w-8 h-8 text-white" />
+                  //     </button>
+                  //   )
+                  // }
+                >
+                  <Image
+                    src="/images/slide-1.png"
+                    alt="台北延吉店"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+                  />
+                  <Image
+                    src="/images/slide-2.jpg"
+                    alt="台北延吉店"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+                  />
+                  <Image
+                    src="/images/slide-3.jpg"
+                    alt="台北延吉店"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+                  />
+                  <Image
+                    src="/images/slide-4.jpg"
+                    alt="台北延吉店"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+                  />
+                  <Image
+                    src="/images/slide-5.jpg"
+                    alt="台北延吉店"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+                  />
+                </Carousel>
+              </div>
+              <div className="w-full md:w-1/2 p-6">
+                <h3 className="text-3xl md:text-4xl font-bold mb-4">
+                  台北延吉店
+                </h3>
+                <div className="text-[#8C734B] text-lg md:text-xl">
+                  <p className="mb-2">
+                    <strong>地址：</strong>
+                    台北市松山區延吉街7-1號B1（屈臣氏後方）
+                  </p>
+                  <p className="mb-2">
+                    <strong>服務電話：</strong>(02)8177-7085
+                  </p>
+                  <p className="mb-2">
+                    <strong>進出時間：</strong>24小時
+                  </p>
+                  <Link href="/branches/1" passHref>
+                    <div className="bg-[#FF9E18] text-white text-center px-6 py-2 rounded-full hover:bg-orange-500 transition-colors duration-300 ease-in-out mt-8 inline-block">
+                      查看更多
+                    </div>
+                  </Link>
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         </section>
       </div>
     </div>

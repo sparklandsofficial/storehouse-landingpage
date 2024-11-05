@@ -40,10 +40,12 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
           <h3 className="text-3xl md:text-4xl font-bold mb-4">台北延吉店</h3>
           <div className="text-[#8C734B] text-lg md:text-xl">
             <p className="mb-2">
-              <strong>地址：</strong>{branchInfo.address}
+              <strong>地址：</strong>
+              {branchInfo.address}
             </p>
             <p className="mb-2">
-              <strong>服務電話：</strong>{branchInfo.phone}
+              <strong>服務電話：</strong>
+              {branchInfo.phone}
             </p>
             <p className="mb-2">
               <strong>進出時間：</strong>24小時
@@ -80,7 +82,146 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <h2 className="text-4xl font-bold my-20 text-center">倉庫尺寸</h2>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-6 bg-white rounded-lg p-6 shadow-sm my-8 mt-20">
+        <a
+          href="https://lin.ee/90nYGUR"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-32 md:w-40 hover:opacity-90 transition-opacity"
+        >
+          <img
+            src="https://qr-official.line.me/gs/M_125negus_GW.png?oat_content=qr"
+            alt="Line QR Code"
+            className="w-full h-auto"
+          />
+        </a>
+        <div className="text-2xl md:text-[72px] text-green-500 font-bold">
+          可加 Line 聯繫客服
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 my-40">
+        <h2 className="md:text-6xl text-4xl font-bold text-center mb-10">
+          全台首創 24H 智能迷你倉
+        </h2>
+        <div className="w-full md:px-40 xl:px-80 mt-16">
+          <img
+            src="https://hd7872mjgdymyoov.public.blob.vercel-storage.com/6%20%E5%9C%88-nxlwt4ngqgmOxTbyHucXAG4LivLWHj.png"
+            alt="24H 智能迷你倉"
+            className="w-full h-auto object-cover"
+          />
+        </div>
+      </div>
+
+      <h2 className="md:text-6xl text-4xl font-bold my-20 text-center">環境照片</h2>
+      <div className="my-12">
+        <div className="md:w-1/2 mx-auto">
+          <Carousel
+            showArrows={true}
+            showThumbs={false}
+            infiniteLoop
+            renderArrowPrev={(onClickHandler, hasPrev, label) =>
+              hasPrev && (
+                <button
+                  type="button"
+                  onClick={onClickHandler}
+                  title={label}
+                  className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-r-md"
+                >
+                  <ChevronLeft className="w-8 h-8 text-white" />
+                </button>
+              )
+            }
+            renderArrowNext={(onClickHandler, hasNext, label) =>
+              hasNext && (
+                <button
+                  type="button"
+                  onClick={onClickHandler}
+                  title={label}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-l-md"
+                >
+                  <ChevronRight className="w-8 h-8 text-white" />
+                </button>
+              )
+            }
+          >
+            <Image
+              src="/images/slide-1.png"
+              alt="台北延吉店"
+              width={600}
+              height={400}
+              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+            />
+            <Image
+              src="/images/slide-2.jpg"
+              alt="台北延吉店"
+              width={600}
+              height={400}
+              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+            />
+            <Image
+              src="/images/slide-3.jpg"
+              alt="台北延吉店"
+              width={600}
+              height={400}
+              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+            />
+            <Image
+              src="/images/slide-4.jpg"
+              alt="台北延吉店"
+              width={600}
+              height={400}
+              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+            />
+            <Image
+              src="/images/slide-5.jpg"
+              alt="台北延吉店"
+              width={600}
+              height={400}
+              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+            />
+            {/* 可以添加更多照片 */}
+          </Carousel>
+        </div>
+      </div>
+
+      <div className="container mx-auto px-4 my-40">
+        <h2 className="md:text-6xl text-4xl font-bold text-center mb-10">
+          下載APP 一機完成
+        </h2>
+        <div className="w-full md:px-40 xl:px-80 mt-16">
+          <div className="flex justify-center space-x-4">
+            <a
+              href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL}
+              target="_blank"
+              className="hover:opacity-80 transition-opacity duration-300"
+            >
+              <Image
+                src="/images/ios-download.png"
+                alt="Download on the App Store"
+                width={1214}
+                height={407}
+                className="h-[50px] sm:h-[75px] w-auto"
+              />
+            </a>
+            <a
+              href={process.env.NEXT_PUBLIC_ANDROID_DOWNLOAD_URL}
+              target="_blank"
+              className="hover:opacity-80 transition-opacity duration-300"
+            >
+              <Image
+                src="/images/android-download.png"
+                alt="GET IT ON Google Play"
+                width={1342}
+                height={398}
+                className="h-[50px] sm:h-[75px] w-auto"
+              />
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <h2 className="md:text-6xl text-4xl font-bold my-20 text-center">倉庫尺寸</h2>
       <div className="mt-12 md:w-1/2 mx-auto">
         <Carousel
           showArrows={true}
@@ -201,75 +342,21 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
         </Carousel>
       </div>
 
-      <h2 className="text-4xl font-bold my-20 text-center">環境照片</h2>
-      <div className="my-12">
-        <div className="md:w-1/2 mx-auto">
-          <Carousel
-            showArrows={true}
-            showThumbs={false}
-            infiniteLoop
-            renderArrowPrev={(onClickHandler, hasPrev, label) =>
-              hasPrev && (
-                <button
-                  type="button"
-                  onClick={onClickHandler}
-                  title={label}
-                  className="absolute left-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-r-md"
-                >
-                  <ChevronLeft className="w-8 h-8 text-white" />
-                </button>
-              )
-            }
-            renderArrowNext={(onClickHandler, hasNext, label) =>
-              hasNext && (
-                <button
-                  type="button"
-                  onClick={onClickHandler}
-                  title={label}
-                  className="absolute right-2 top-1/2 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-l-md"
-                >
-                  <ChevronRight className="w-8 h-8 text-white" />
-                </button>
-              )
-            }
-          >
-            <Image
-              src="/images/slide-1.png"
-              alt="台北延吉店"
-              width={600}
-              height={400}
-              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-            />
-            <Image
-              src="/images/slide-2.jpg"
-              alt="台北延吉店"
-              width={600}
-              height={400}
-              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-            />
-            <Image
-              src="/images/slide-3.jpg"
-              alt="台北延吉店"
-              width={600}
-              height={400}
-              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-            />
-            <Image
-              src="/images/slide-4.jpg"
-              alt="台北延吉店"
-              width={600}
-              height={400}
-              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-            />
-            <Image
-              src="/images/slide-5.jpg"
-              alt="台北延吉店"
-              width={600}
-              height={400}
-              className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-            />
-            {/* 可以添加更多照片 */}
-          </Carousel>
+      <div className="flex flex-col md:flex-row justify-center items-center gap-6 bg-white rounded-lg p-6 shadow-sm my-8 mt-20">
+        <a
+          href="https://lin.ee/90nYGUR"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="w-32 md:w-40 hover:opacity-90 transition-opacity"
+        >
+          <img
+            src="https://qr-official.line.me/gs/M_125negus_GW.png?oat_content=qr"
+            alt="Line QR Code"
+            className="w-full h-auto"
+          />
+        </a>
+        <div className="text-2xl md:text-[72px] text-green-500 font-bold">
+          可加 Line 聯繫客服
         </div>
       </div>
     </div>
