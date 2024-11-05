@@ -159,7 +159,7 @@ export default function Home() {
           <Link href="/branches/1">
             <div className="flex flex-col md:flex-row md:space-x-20">
               <div className="w-full md:w-1/2 mb-8 md:mb-0">
-                <Carousel
+                {/* <Carousel
                   showArrows={false}
                   showThumbs={false}
                   autoPlay={true}
@@ -188,7 +188,7 @@ export default function Home() {
                   //     </button>
                   //   )
                   // }
-                >
+                > */}
                   <Image
                     src="/images/slide-1.png"
                     alt="台北延吉店"
@@ -196,7 +196,7 @@ export default function Home() {
                     height={400}
                     className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
                   />
-                  <Image
+                  {/* <Image
                     src="/images/slide-2.jpg"
                     alt="台北延吉店"
                     width={600}
@@ -223,8 +223,8 @@ export default function Home() {
                     width={600}
                     height={400}
                     className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-                  />
-                </Carousel>
+                  /> */}
+                {/* </Carousel> */}
               </div>
               <div className="w-full md:w-1/2 p-6">
                 <h3 className="text-3xl md:text-4xl font-bold mb-4">
