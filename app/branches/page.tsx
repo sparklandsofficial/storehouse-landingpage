@@ -160,8 +160,9 @@ export default function Home() {
             <div className="flex flex-col md:flex-row md:space-x-20">
               <div className="w-full md:w-1/2 mb-8 md:mb-0">
                 <Carousel
-                  showArrows={true}
+                  showArrows={false}
                   showThumbs={false}
+                  autoPlay={true}
                   infiniteLoop
                   // renderArrowPrev={(onClickHandler, hasPrev, label) =>
                   //   hasPrev && (
