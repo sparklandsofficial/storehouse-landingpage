@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import Navigation from './components/navigation'
 import Footer from './components/footer'
+import FacebookPixel from './components/FacebookPixel'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -17,7 +18,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-TW">
+      <head />
       <body className={inter.className}>
+        <FacebookPixel />
         <Navigation />
         <main className='mt-[70px] relative max-w-[100vw] overflow-x-hidden'>{children}</main>
         <Footer />
