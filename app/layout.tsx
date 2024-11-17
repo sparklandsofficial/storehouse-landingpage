@@ -4,6 +4,7 @@ import './globals.css'
 import Navigation from './components/navigation'
 import Footer from './components/footer'
 import FacebookPixel from './components/FacebookPixel'
+import GoogleTrack from './components/GoogleTrack'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
@@ -21,6 +22,7 @@ export default function RootLayout({
       <head />
       <body className={inter.className}>
         <FacebookPixel />
+        <GoogleTrack />
         <Navigation />
         <main className='mt-[70px] relative max-w-[100vw] overflow-x-hidden'>{children}</main>
         <Footer />

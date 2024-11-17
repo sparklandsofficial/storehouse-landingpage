@@ -2,7 +2,7 @@
 
 import Script from 'next/script'
 
-export default function FacebookPixel() {
+export default function GoogleTrack() {
   return (
     <>
       <Script async src="https://www.googletagmanager.com/gtag/js?id=AW-528010636" />
