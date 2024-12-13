@@ -1,6 +1,6 @@
 export default function FranchiseRequirements() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 max-md:p-0">
       <h1 className="text-3xl font-bold text-[#483729] mb-12">加盟申請條件</h1>
 
       <div className="grid md:grid-cols-2 gap-8 mb-12">

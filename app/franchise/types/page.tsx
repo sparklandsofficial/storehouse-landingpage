@@ -1,6 +1,6 @@
 export default function FranchiseTypes() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 max-md:p-0">
       <h1 className="text-3xl font-bold text-[#483729] mb-12">加盟型態</h1>
 
       {/* 第一個表格 - 一般加盟 */}

@@ -1,6 +1,6 @@
 export default function FranchiseInvestment() {
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container mx-auto px-4 py-8 max-md:p-0">
       <h1 className="text-3xl font-bold text-[#483729] mb-12">雙方投資 & 資源</h1>
 
       <div className="overflow-x-auto">
