@@ -2,14 +2,24 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { scrollToElement } from "@/lib/utils";
+// import { scrollToElement } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+} from "@/components/ui/dropdown-menu";
 
 export default function Navigation() {
   const [isMobile, setIsMobile] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -27,7 +37,7 @@ export default function Navigation() {
       <li>
         <Link
           href="/"
-          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out"
+          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg"
         >
           首頁
         </Link>
@@ -35,7 +45,7 @@ export default function Navigation() {
       <li>
         <Link
           href="/about"
-          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out"
+          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg"
         >
           關於星域
         </Link>
@@ -43,32 +53,70 @@ export default function Navigation() {
       <li>
         <Link
           href="/branches"
-          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out"
+          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg"
         >
           租倉據點
         </Link>
       </li>
       <li>
+        <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
+          <div
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+          >
+            <DropdownMenuTrigger className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg">
+              加盟辦法
+            </DropdownMenuTrigger>
+            <DropdownMenuContent
+              onMouseEnter={() => setIsOpen(true)}
+              onMouseLeave={() => setIsOpen(false)}
+              className="w-48"
+            >
+              <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
+                <Link href="/franchise/advantages">加盟優勢</Link>
+              </DropdownMenuItem>
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger className="py-3 text-base font-medium hover:bg-orange-50">
+                  加盟方式
+                </DropdownMenuSubTrigger>
+                <DropdownMenuSubContent className="w-48">
+                  <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
+                    <Link href="/franchise/process">加盟流程</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
+                    <Link href="/franchise/requirements">加盟申請條件</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
+                    <Link href="/franchise/types">加盟型態</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
+                    <Link href="/franchise/investment">雙方投資 & 資源</Link>
+                  </DropdownMenuItem>
+                </DropdownMenuSubContent>
+              </DropdownMenuSub>
+              <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
+                <Link href="/franchise/apply">我要加盟</Link>
+              </DropdownMenuItem>
+              <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
+                <Link href="/franchise/contact">加盟聯繫</Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </div>
+        </DropdownMenu>
+      </li>
+      <li>
         <Link
           href="/faq"
-          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out"
+          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg"
         >
           常見問題
         </Link>
       </li>
       <li>
-        <button
-          onClick={() => scrollToElement("contact")}
-          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out"
-        >
-          聯絡我們
-        </button>
-      </li>
-      <li>
         <a
           href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL}
           target="_blank"
-          className="bg-[#FF9E18] text-white px-6 py-1 rounded-full hover:bg-orange-500 transition-colors duration-300 ease-in-out"
+          className="bg-[#FF9E18] text-white px-6 py-1 rounded-full hover:bg-orange-500 transition-colors duration-300 ease-in-out text-lg"
         >
           APP下載
         </a>
@@ -77,7 +125,7 @@ export default function Navigation() {
   );
 
   return (
-    <header className="bg-white p-4 shadow-lg fixed top-0 left-0 w-full z-[100]">
+    <header className="bg-white p-4 shadow-lg fixed top-0 left-0 w-full z-[10]">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <Link
