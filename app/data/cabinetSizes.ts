@@ -11,22 +11,22 @@ export interface CabinetSize {
 }
 
 export const cabinetSizes: CabinetSize[] = [
-  // {
-  //   type: "S上櫃",
-  //   image: "/images/s-top.png",
-  //   sizes: [
-  //     {
-  //       height: "91.5cm",
-  //       width: "92cm",
-  //       depth: "109.5cm",
-  //       volume: "35材積",
-  //       monthlyRent: "1,480元",
-  //     },
-  //   ],
-  // },
+  {
+    type: "S上櫃",
+    image: "/images/size/size001.jpeg",
+    sizes: [
+      {
+        height: "91.5cm",
+        width: "92cm",
+        depth: "109.5cm",
+        volume: "35材積",
+        monthlyRent: "1,480元",
+      },
+    ],
+  },
   {
     type: "S下櫃",
-    image: "/images/s.001.png",
+    image: "/images/size/size002.jpeg",
     sizes: [
       {
         height: "121.5cm",
@@ -39,7 +39,7 @@ export const cabinetSizes: CabinetSize[] = [
   },
   {
     type: "M全櫃",
-    image: "/images/s.002.png",
+    image: "/images/size/size003.jpeg",
     sizes: [
       {
         height: "213.15cm",
@@ -52,7 +52,7 @@ export const cabinetSizes: CabinetSize[] = [
   },
   {
     type: "L全櫃",
-    image: "/images/s.003.png",
+    image: "/images/size/size004.jpeg",
     sizes: [
       {
         height: "213.1cm",
@@ -65,7 +65,7 @@ export const cabinetSizes: CabinetSize[] = [
   },
   {
     type: "XL全櫃",
-    image: "/images/s.004.png",
+    image: "/images/size/size005.jpeg",
     sizes: [
       {
         height: "213.1cm",
@@ -76,18 +76,18 @@ export const cabinetSizes: CabinetSize[] = [
       },
     ],
   },
-  {
-    type: "XXL全櫃",
-    image: "/images/s.005.png",
-    sizes: [
-      {
-        height: "213.1cm",
-        width: "300cm",
-        depth: "125.5cm",
-        volume: "35材積",
-        monthlyRent: "1,480元",
-      },
-    ],
-  },
+  // {
+  //   type: "XXL全櫃",
+  //   image: "/images/s.005.png",
+  //   sizes: [
+  //     {
+  //       height: "213.1cm",
+  //       width: "300cm",
+  //       depth: "125.5cm",
+  //       volume: "35材積",
+  //       monthlyRent: "1,480元",
+  //     },
+  //   ],
+  // },
   // 可以添加更多類型的櫃子
 ];
