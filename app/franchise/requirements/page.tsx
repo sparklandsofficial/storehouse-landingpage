@@ -11,7 +11,7 @@ export default function FranchiseRequirements() {
           </h2>
           <ul className="space-y-4 list-disc pl-6">
             <li className="text-gray-700">店舖自有</li>
-            <li className="text-gray-700">營業面積60坪以上</li>
+            <li className="text-gray-700">營業面積30坪以上</li>
             <li className="text-gray-700">年齡55歲以下</li>
             <li className="text-gray-700">無不良負債、信用良好</li>
           </ul>
@@ -24,7 +24,7 @@ export default function FranchiseRequirements() {
           </h2>
           <ul className="space-y-4 list-disc pl-6">
             <li className="text-gray-700">店舖自有</li>
-            <li className="text-gray-700">營業面積60坪以上</li>
+            <li className="text-gray-700">營業面積30坪以上</li>
             <li className="text-gray-700">無不良負債、信用良好</li>
           </ul>
         </div>

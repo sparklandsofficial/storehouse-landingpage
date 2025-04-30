@@ -36,7 +36,7 @@ export default function FranchiseTypes() {
                 設備費用
               </td>
               <td className="border p-4 text-center " colSpan={2}>
-                250萬元起(依坪數大小而定)
+                100萬元起(依坪數大小而定)
                 <br />
                 加盟主100%
               </td>
@@ -127,14 +127,14 @@ export default function FranchiseTypes() {
                 設備費用
               </td>
               <td className="border p-4">
-                250萬元起(依坪數大小而定)
+                100萬元起(依坪數大小而定)
                 <br />
                 加盟主50%
                 <br />
                 星域50%
               </td>
               <td className="border p-4">
-                250萬元起(依坪數大小而定)
+                100萬元起(依坪數大小而定)
                 <br />
                 加盟主10%
                 <br />
@@ -154,16 +154,12 @@ export default function FranchiseTypes() {
               <td className="border p-4">
                 不動產抵押設定
                 <br />
-                300萬元起
-                <br />
-                (超過100坪每50坪150萬元)
+                150萬元起
               </td>
               <td className="border p-4">
                 不動產抵押設定
                 <br />
-                500萬元起
-                <br />
-                (超過100坪每50坪250萬元)
+                200萬元起
               </td>
             </tr>
             <tr>
