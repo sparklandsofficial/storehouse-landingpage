@@ -50,6 +50,15 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
             <p className="mb-2">
               <strong>進出時間：</strong>24小時
             </p>
+            <div className="mt-8 w-full h-[370px]">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.6050493595785!2d121.55111207631066!3d25.047473977807748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ab4af68a3cf9%3A0xa127da4fc4f19a1d!2z5Y-w5YyX5p2-5bGx6L-35L2g5YCJ772c5pif5Z-f5pm656m66ZaTMjTlsI_mmYLlhajmmbrog73lgInluqvvvIjlu7blkInlupfvvIk!5e0!3m2!1szh-TW!2stw!4v1747468541748!5m2!1szh-TW!2stw"
+                width="100%"
+                height="100%"
+                className="w-full h-full md:max-h-[370px] max-h-[250px] object-cover"
+                loading="lazy"
+              ></iframe>
+            </div>
           </div>
           <div className="flex justify-start space-x-4 mt-8">
             <a
@@ -113,7 +122,9 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <h2 className="md:text-6xl text-4xl font-bold my-20 text-center">環境照片</h2>
+      <h2 className="md:text-6xl text-4xl font-bold my-20 text-center">
+        環境照片
+      </h2>
       <div className="my-12">
         <div className="md:w-1/2 mx-auto">
           <Carousel
@@ -221,7 +232,9 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <h2 className="md:text-6xl text-4xl font-bold my-20 text-center">倉庫尺寸</h2>
+      <h2 className="md:text-6xl text-4xl font-bold my-20 text-center">
+        倉庫尺寸
+      </h2>
       <div className="mt-12 md:w-1/2 mx-auto">
         <Carousel
           showArrows={true}

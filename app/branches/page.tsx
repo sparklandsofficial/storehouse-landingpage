@@ -157,7 +157,9 @@ export default function Home() {
             </div>
           </div>
           <Link href="/branches/1">
-            <div className="flex flex-col md:flex-row md:space-x-20">
+            <h3 className="text-2xl md:text-2xl font-bold mb-4">台北延吉店</h3>
+            <hr />
+            <div className="flex flex-col md:flex-row md:space-x-20 py-6">
               <div className="w-full md:w-1/2 mb-8 md:mb-0">
                 {/* <Carousel
                   showArrows={false}
@@ -189,14 +191,14 @@ export default function Home() {
                   //   )
                   // }
                 > */}
-                  <Image
-                    src="/images/slide-1.png"
-                    alt="台北延吉店"
-                    width={600}
-                    height={400}
-                    className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
-                  />
-                  {/* <Image
+                <Image
+                  src="/images/slide-1.png"
+                  alt="台北延吉店"
+                  width={600}
+                  height={400}
+                  className="w-full h-auto md:max-h-[500px] max-h-[250px] object-cover"
+                />
+                {/* <Image
                     src="/images/slide-2.jpg"
                     alt="台北延吉店"
                     width={600}
@@ -226,26 +228,27 @@ export default function Home() {
                   /> */}
                 {/* </Carousel> */}
               </div>
-              <div className="w-full md:w-1/2 p-6">
-                <h3 className="text-3xl md:text-4xl font-bold mb-4">
-                  台北延吉店
-                </h3>
+              <div className="w-full md:w-1/2">
                 <div className="text-[#8C734B] text-lg md:text-xl">
-                  <p className="mb-2">
+                  <p className="mb-2 text-md">
                     <strong>地址：</strong>
                     台北市松山區延吉街7-1號B1（屈臣氏後方）
                   </p>
-                  <p className="mb-2">
+                  <p className="mb-2 text-md">
                     <strong>服務電話：</strong>(02)8177-7085
                   </p>
-                  <p className="mb-2">
+                  <p className="mb-2 text-md">
                     <strong>進出時間：</strong>24小時
                   </p>
-                  <Link href="/branches/1" passHref>
-                    <div className="bg-[#FF9E18] text-white text-center px-6 py-2 rounded-full hover:bg-orange-500 transition-colors duration-300 ease-in-out mt-8 inline-block">
-                      查看更多
-                    </div>
-                  </Link>
+                </div>
+                <div className="mt-8 w-full h-[370px]">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3614.6050493595785!2d121.55111207631066!3d25.047473977807748!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3442ab4af68a3cf9%3A0xa127da4fc4f19a1d!2z5Y-w5YyX5p2-5bGx6L-35L2g5YCJ772c5pif5Z-f5pm656m66ZaTMjTlsI_mmYLlhajmmbrog73lgInluqvvvIjlu7blkInlupfvvIk!5e0!3m2!1szh-TW!2stw!4v1747468541748!5m2!1szh-TW!2stw"
+                    width="100%"
+                    height="100%"
+                    className="w-full h-full md:max-h-[370px] max-h-[250px] object-cover"
+                    loading="lazy"
+                  ></iframe>
                 </div>
               </div>
             </div>
