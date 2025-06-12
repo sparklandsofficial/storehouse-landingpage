@@ -24,15 +24,18 @@ export default function RootLayout({
           async
           src="https://www.googletagmanager.com/gtag/js?id=AW-528010636"
         />
-        <script id="google-track">
-          {`
+        <script
+          id="google-track"
+          dangerouslySetInnerHTML={{
+            __html: `
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
 
           gtag('config', 'AW-528010636');
-        `}
-        </script>
+        `,
+          }}
+        />
         {/* Event snippet for apple store 下載 conversion page */}
         <script
           dangerouslySetInnerHTML={{
