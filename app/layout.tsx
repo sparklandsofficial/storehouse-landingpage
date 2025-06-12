@@ -19,7 +19,46 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-TW">
-      <head />
+      <head>
+        {/* Event snippet for apple store 下載 conversion page */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.addEventListener("load", function (event) {
+              document.querySelectorAll("a[href*='https://www.sparkspace.com.tw/iosdownload']").forEach(function (e) {
+                e.addEventListener('click', function () {
+                  gtag('event', 'conversion', { 'send_to': 'AW-17048583243/WvncCPTcuNcaEMv4ssE_' });
+                });
+              });
+            });
+          `
+        }} />
+
+        {/* Event snippet for googlepay conversion page */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.addEventListener("load", function (event) {
+              document.querySelectorAll("a[href*='https://www.sparkspace.com.tw/androiddownload']").forEach(function (e) {
+                e.addEventListener('click', function () {
+                  gtag('event', 'conversion', { 'send_to': 'AW-17048583243/-BReCPfcuNcaEMv4ssE_' });
+                });
+              });
+            });
+          `
+        }} />
+
+        {/* Event snippet for line 按鈕 conversion page */}
+        <script dangerouslySetInnerHTML={{
+          __html: `
+            window.addEventListener("load", function (event) {
+              document.querySelectorAll("a[href*='https://lin.ee/']").forEach(function (e) {
+                e.addEventListener('click', function () {
+                  gtag('event', 'conversion', { 'send_to': 'AW-17048583243/cyeECPrcuNcaEMv4ssE_' });
+                });
+              });
+            });
+          `
+        }} />
+      </head>
       <body className={inter.className}>
         <FacebookPixel />
         <GoogleTrack />
