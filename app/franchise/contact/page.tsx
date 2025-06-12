@@ -15,25 +15,25 @@ export default function FranchiseContact() {
             >
               02-2796-3030
             </a>
-            <span className="text-white text-xl">(加盟專員廖先生)</span>
+            <span className="text-white text-xl">(加盟專員)</span>
           </p>
           <p className="flex items-center justify-start space-x-3 max-md:flex-col">
             <span className="text-white text-xl">Email:</span>
             <a
-              href="mailto:avisl@sparklands.co"
+              href="mailto:spark@sparklands.co"
               className="text-white text-2xl font-bold hover:text-gray-100 transition-colors duration-300 underline max-md:mb-2"
             >
-              avisl@sparklands.co
+              spark@sparklands.co
             </a>
           </p>
           <p className="flex items-center justify-start space-x-3 max-md:flex-col">
             <span className="text-white text-xl">Line 官方:</span>
             <a
-              href="https://lin.ee/Z58WSDK"
+              href="https://lin.ee/Et27TRX"
               target="_blank"
               className="text-white text-2xl font-bold hover:text-gray-100 transition-colors duration-300 underline max-md:mb-2"
             >
-              @125negus
+              @sparkspace
             </a>
           </p>
         </div>
