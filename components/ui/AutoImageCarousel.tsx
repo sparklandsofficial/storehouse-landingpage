@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import Image from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination, A11y, EffectFade } from "swiper/modules";
@@ -21,7 +21,6 @@ export default function AutoImageCarousel({
   intervalMs = 4000,
   effect = "fade",
   rounded = "rounded-xl",
-  aspectRatio,
 }: AutoImageCarouselProps) {
   // 自動高度版本：不預先計高度，交由圖片自然高度與 Swiper autoHeight 控制
   
