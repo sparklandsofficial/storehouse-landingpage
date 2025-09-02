@@ -26,6 +26,132 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
 
   return (
     <div className="container mx-auto px-4 md:pt-20 pt-10">
+      <div className="h-[100vh]" id="show_size">
+        <h2 className="md:text-6xl text-4xl font-bold my-20 text-center">
+          倉庫尺寸
+        </h2>
+        <div className="mt-12 md:w-1/2 mx-auto">
+          <Carousel
+            dynamicHeight={false}
+            showArrows={true}
+            showThumbs={false}
+            infiniteLoop
+            renderArrowPrev={(onClickHandler, hasPrev, label) =>
+              hasPrev && (
+                <button
+                  type="button"
+                  onClick={onClickHandler}
+                  title={label}
+                  className="absolute left-0 top-1/3 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-r-md"
+                >
+                  <ChevronLeft className="w-8 h-8 text-white" />
+                </button>
+              )
+            }
+            renderArrowNext={(onClickHandler, hasNext, label) =>
+              hasNext && (
+                <button
+                  type="button"
+                  onClick={onClickHandler}
+                  title={label}
+                  className="absolute right-0 top-1/3 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-l-md"
+                >
+                  <ChevronRight className="w-8 h-8 text-white" />
+                </button>
+              )
+            }
+          >
+            {cabinetSizes.map((cabinet, index) => (
+              <div className="flex flex-col md:flex-col gap-8" key={index}>
+                <div className="h-[320px] md:h-[420px] flex items-center justify-center">
+                  <Image
+                    src={cabinet.image}
+                    alt="倉庫尺寸圖"
+                    width={400}
+                    height={300}
+                    className="max-h-full w-auto object-contain"
+                  />
+                </div>
+                <div className="">
+                  {/* <table className="w-full border-collapse border border-[#8C734B] text-[#8C734B] text-md">
+                  <React.Fragment key={index}>
+                    <thead>
+                      <tr className="bg-[#8C734B]">
+                        <th
+                          className="border border-[#8C734B] p-2 text-white"
+                          colSpan={5}
+                        >
+                          型號
+                        </th>
+                      </tr>
+                      <tr className="bg-white">
+                        <th
+                          className="border border-[#8C734B] text-[#8C734B] p-2"
+                          colSpan={5}
+                        >
+                          {cabinet.type}
+                        </th>
+                      </tr>
+                      <tr className="bg-white">
+                        <th className="border border-[#8C734B] text-[#8C734B] p-2">
+                          高
+                        </th>
+                        <th className="border border-[#8C734B] text-[#8C734B] p-2">
+                          寬
+                        </th>
+                        <th className="border border-[#8C734B] text-[#8C734B] p-2">
+                          深
+                        </th>
+                        <th className="border border-[#8C734B] text-[#8C734B] p-2">
+                          材積
+                        </th>
+                        <th className="border border-[#8C734B] text-[#8C734B] p-2">
+                          月租金
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cabinet.sizes.map((size, sizeIndex) => (
+                        <tr key={sizeIndex}>
+                          <td className="border border-[#8C734B] text-[#8C734B] p-2 text-center">
+                            {size.height}
+                          </td>
+                          <td className="border border-[#8C734B] text-[#8C734B] p-2 text-center">
+                            {size.width}
+                          </td>
+                          <td className="border border-[#8C734B] text-[#8C734B] p-2 text-center">
+                            {size.depth}
+                          </td>
+                          <td className="border border-[#8C734B] text-[#8C734B] p-2 text-center">
+                            {size.volume}
+                          </td>
+                          <td className="border border-[#8C734B] text-[#8C734B] p-2 text-center">
+                            {size.monthlyRent}
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </React.Fragment>
+                </table> */}
+                  <p className="mt-4 text-lg text-[#8C734B] text-left">
+                    上表尺寸因施工因素，可能會有正負5％之施工誤差。
+                    <br />
+                    尺寸範例：
+                    <br />
+                    ・郵局包裹便利箱BOX3尺寸：長39.5 x 寬27.5 x 高23cm
+                    <br />
+                    ・7-11交貨便寄件箱(大)：長35 x 寬30 x 高30cm
+                    <br />
+                    ・一般通用大型紙箱：長45 x 寬30 x 高30cm
+                    <br />
+                    ・半車3.5頓貨車載貨量：約110材積
+                  </p>
+                </div>
+              </div>
+            ))}
+          </Carousel>
+        </div>
+      </div>
       <div className="flex flex-col md:flex-row gap-8 items-center">
         <div className="md:w-2/3">
           <Image
@@ -232,128 +358,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
         </div>
       </div>
 
-      <h2 className="md:text-6xl text-4xl font-bold my-20 text-center">
-        倉庫尺寸
-      </h2>
-      <div className="mt-12 md:w-1/2 mx-auto">
-        <Carousel
-          showArrows={true}
-          showThumbs={false}
-          infiniteLoop
-          renderArrowPrev={(onClickHandler, hasPrev, label) =>
-            hasPrev && (
-              <button
-                type="button"
-                onClick={onClickHandler}
-                title={label}
-                className="absolute left-0 top-1/3 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-r-md"
-              >
-                <ChevronLeft className="w-8 h-8 text-white" />
-              </button>
-            )
-          }
-          renderArrowNext={(onClickHandler, hasNext, label) =>
-            hasNext && (
-              <button
-                type="button"
-                onClick={onClickHandler}
-                title={label}
-                className="absolute right-0 top-1/3 -translate-y-1/2 z-10 p-2 bg-black bg-opacity-50 hover:bg-opacity-75 transition-all duration-300 rounded-l-md"
-              >
-                <ChevronRight className="w-8 h-8 text-white" />
-              </button>
-            )
-          }
-        >
-          {cabinetSizes.map((cabinet, index) => (
-            <div className="flex flex-col md:flex-col gap-8" key={index}>
-              <div className="">
-                <Image
-                  src={cabinet.image}
-                  alt="倉庫尺寸圖"
-                  width={400}
-                  height={300}
-                />
-              </div>
-              <div className="">
-                {/* <table className="w-full border-collapse border border-[#8C734B] text-[#8C734B] text-md">
-                  <React.Fragment key={index}>
-                    <thead>
-                      <tr className="bg-[#8C734B]">
-                        <th
-                          className="border border-[#8C734B] p-2 text-white"
-                          colSpan={5}
-                        >
-                          型號
-                        </th>
-                      </tr>
-                      <tr className="bg-white">
-                        <th
-                          className="border border-[#8C734B] text-[#8C734B] p-2"
-                          colSpan={5}
-                        >
-                          {cabinet.type}
-                        </th>
-                      </tr>
-                      <tr className="bg-white">
-                        <th className="border border-[#8C734B] text-[#8C734B] p-2">
-                          高
-                        </th>
-                        <th className="border border-[#8C734B] text-[#8C734B] p-2">
-                          寬
-                        </th>
-                        <th className="border border-[#8C734B] text-[#8C734B] p-2">
-                          深
-                        </th>
-                        <th className="border border-[#8C734B] text-[#8C734B] p-2">
-                          材積
-                        </th>
-                        <th className="border border-[#8C734B] text-[#8C734B] p-2">
-                          月租金
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {cabinet.sizes.map((size, sizeIndex) => (
-                        <tr key={sizeIndex}>
-                          <td className="border border-[#8C734B] text-[#8C734B] p-2 text-center">
-                            {size.height}
-                          </td>
-                          <td className="border border-[#8C734B] text-[#8C734B] p-2 text-center">
-                            {size.width}
-                          </td>
-                          <td className="border border-[#8C734B] text-[#8C734B] p-2 text-center">
-                            {size.depth}
-                          </td>
-                          <td className="border border-[#8C734B] text-[#8C734B] p-2 text-center">
-                            {size.volume}
-                          </td>
-                          <td className="border border-[#8C734B] text-[#8C734B] p-2 text-center">
-                            {size.monthlyRent}
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </React.Fragment>
-                </table> */}
-                <p className="mt-4 text-lg text-[#8C734B] text-left">
-                  上表尺寸因施工因素，可能會有正負5％之施工誤差。
-                  <br />
-                  尺寸範例：
-                  <br />
-                  ・郵局包裹便利箱BOX3尺寸：長39.5 x 寬27.5 x 高23cm
-                  <br />
-                  ・7-11交貨便寄件箱(大)：長35 x 寬30 x 高30cm
-                  <br />
-                  ・一般通用大型紙箱：長45 x 寬30 x 高30cm
-                  <br />
-                  ・半車3.5頓貨車載貨量：約110材積
-                </p>
-              </div>
-            </div>
-          ))}
-        </Carousel>
-      </div>
+
 
       <div className="flex flex-col md:flex-row justify-center items-center gap-6 bg-white rounded-lg p-6 shadow-sm my-8 mt-20">
         <a

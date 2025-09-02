@@ -52,7 +52,7 @@ export default function Navigation() {
       </li>
       <li>
         <Link
-          href="/branches"
+          href="/branches/1" //有新倉就要改回branches/   目前是讓客人直接進入台北延吉店看倉的規格，但有新倉的話就不能這樣搞
           className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg"
         >
           租倉據點
