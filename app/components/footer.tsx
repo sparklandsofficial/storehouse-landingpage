@@ -137,7 +137,7 @@ export default function Footer() {
                   aria-label="IG"
                 >
                   <Image
-                    src="/images/ig-logo.jpeg"
+                    src="/images/ig-logo.png"
                     alt="IG"
                     width={25}
                     height={25}
