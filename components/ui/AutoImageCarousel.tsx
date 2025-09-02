@@ -23,9 +23,7 @@ export default function AutoImageCarousel({
   rounded = "rounded-xl",
   aspectRatio,
 }: AutoImageCarouselProps) {
-  // 移除未使用的 containerWidth 狀態，避免 ESLint 報錯
-  const [calculatedHeight, setCalculatedHeight] = useState<number>(0);
-  const [isMobile, setIsMobile] = useState(false);
+  // 自動高度版本：不預先計高度，交由圖片自然高度與 Swiper autoHeight 控制
   
   const hasImages = images && images.length > 0;
   const firstImage = useMemo(() => images?.[0], [images]);
@@ -39,76 +37,12 @@ export default function AutoImageCarousel({
     console.log("[AutoImageCarousel] mounted, images: ", images?.map((i) => i.src));
   }, [images]);
 
-  // 偵測是否為手機，避免 SSR 讀取 window
-  useEffect(() => {
-    const updateIsMobile = () => setIsMobile(typeof window !== 'undefined' ? window.innerWidth < 768 : false);
-    updateIsMobile();
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', updateIsMobile);
-      return () => window.removeEventListener('resize', updateIsMobile);
-    }
-  }, []);
-
-  // 自動計算高度為 90vh（或依比例／圖片比例）
-  useEffect(() => {
-    if (height) {
-      setCalculatedHeight(height);
-      return;
-    }
-
-    const updateHeight = () => {
-      const win = typeof window !== 'undefined' ? window : undefined;
-      const doc = typeof document !== 'undefined' ? document : undefined;
-      const mobile = win ? win.innerWidth < 768 : false;
-      const viewportHeight = win ? Math.floor(win.innerHeight * 0.9) : 0;
-      let nextHeight = viewportHeight;
-
-      const container = doc
-        ? (doc.querySelector('[data-carousel-container]') as HTMLElement | null)
-        : null;
-
-      let width = 0;
-      if (container) {
-        width = container.offsetWidth;
-      }
-
-      // 計算圖片比例高度
-      let ratioHeight = 0;
-      if (width > 0) {
-        if (aspectRatio && aspectRatio > 0) {
-          ratioHeight = Math.floor(width / aspectRatio);
-        } else if (firstImage?.width && firstImage?.height) {
-          const imgAspectRatio = firstImage.width / firstImage.height;
-          ratioHeight = Math.floor(width / imgAspectRatio);
-        }
-      }
-
-      // 手機：使用圖片比例高度（完整顯示），桌面：取較大值
-      if (mobile) {
-        nextHeight = ratioHeight || nextHeight; // 沒有比例時退回 viewport
-      } else {
-        if (ratioHeight > 0) {
-          nextHeight = Math.max(viewportHeight, ratioHeight);
-        }
-      }
-
-      setCalculatedHeight(nextHeight);
-    };
-
-    updateHeight();
-
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', updateHeight);
-      return () => window.removeEventListener('resize', updateHeight);
-    }
-  }, [height, firstImage, aspectRatio]);
-
   if (!hasImages) return null;
 
   return (
     <div 
-      className={`w-full md:w-4/5 mx-auto ${rounded} relative z-30 max-md:w-screen max-md:mx-[calc(50%-50vw)]`} 
-      style={{ height: isMobile ? 'auto' as const : calculatedHeight }}
+      className={`w-full md:w-2/5 mx-auto ${rounded} relative z-30 max-md:w-screen max-md:mx-[calc(50%-50vw)]`} 
+      style={{ height: 'auto' }}
       data-carousel-container
     >
       <Swiper
@@ -118,19 +52,19 @@ export default function AutoImageCarousel({
         effect={effect}
         pagination={{ clickable: true }}
         aria-roledescription="carousel"
-        style={{ height: isMobile ? 'auto' : '100%' }}
+        style={{ height: 'auto' }}
         autoHeight
         className="!w-full !h-full"
       >
         {images.map((img, idx) => (
           <SwiperSlide key={`${img.src}-${idx}`} aria-label={`${idx + 1} / ${images.length}`}>
-            <div className="relative w-full max-md:h-auto md:h-full flex items-center justify-center bg-gray-100">
+            <div className="relative w-full h-auto flex items-center justify-center bg-gray-100">
               <Image
                 src={img.src}
                 alt={img.alt || "carousel image"}
                 width={1920}
                 height={1080}
-                className="w-full max-md:h-auto md:h-full object-contain md:object-cover"
+                className="w-full h-auto object-contain"
                 sizes="100vw"
                 priority={priority && idx === 0}
                 quality={95}

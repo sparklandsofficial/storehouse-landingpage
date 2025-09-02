@@ -41,6 +41,8 @@ body {
     --radius: 0.5rem;
     /* Header height variable for layout offset */
     --header-h: 80px;
+    /* Footer height variable default (會在 runtime 由 footer 設定) */
+    --footer-h: 96px;
   }
   .dark {
     --background: 0 0% 3.9%;

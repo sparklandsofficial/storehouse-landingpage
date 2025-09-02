@@ -88,7 +88,7 @@ export default function RootLayout({
         <FacebookPixel />
         <GoogleTrack />
         <Navigation />
-        <main className="mt-[70px] relative max-w-[100vw] pb-24 md:pb-28">
+        <main className="mt-[70px] relative max-w-[100vw] pb-[var(--footer-h)]">
           {children}
         </main>
         <Footer />
