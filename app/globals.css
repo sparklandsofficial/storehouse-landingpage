@@ -39,6 +39,8 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    /* Header height variable for layout offset */
+    --header-h: 80px;
   }
   .dark {
     --background: 0 0% 3.9%;
@@ -66,6 +68,11 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+}
+
+/* 手機 header 高度設定 */
+@media (max-width: 768px) {
+  :root { --header-h: 64px; }
 }
 
 @layer base {

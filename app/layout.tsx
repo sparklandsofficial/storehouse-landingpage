@@ -5,6 +5,9 @@ import Navigation from "./components/navigation";
 import Footer from "./components/footer";
 import FacebookPixel from "./components/FacebookPixel";
 import GoogleTrack from "./components/GoogleTrack";
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -85,7 +88,7 @@ export default function RootLayout({
         <FacebookPixel />
         <GoogleTrack />
         <Navigation />
-        <main className="mt-[70px] relative max-w-[100vw] overflow-x-hidden">
+        <main className="mt-[70px] relative max-w-[100vw] pb-24 md:pb-28">
           {children}
         </main>
         <Footer />

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import AutoImageCarousel from "@/components/ui/AutoImageCarousel";
 import FAQSection from "./components/faq";
 
 const indexToleft = (index: number) => {
@@ -19,15 +20,24 @@ const indexToleft = (index: number) => {
 };
 
 export default function Home() {
+  const carouselImages = Array.from({ length: 9 }, (_, i) => ({
+    src: `/images/image_group_1/${i + 1}.jpg`,
+    alt: `image ${i + 1}`,
+  }));
+  console.log("[Home] carouselImages", carouselImages);
+
+  
   return (
     <div className="bg-[#f7f7f5]">
-      <Image
-        src="/images/hero-bg.png"
-        alt="Hero Background"
-        width={8000}
-        height={4167}
-        className="w-full absolute top-[-70px] left-0 z-0"
-      />
+      <div className="pt-[var(--header-h)] relative">
+        <Image
+          src="/images/Banner.png"
+          alt="Hero Background"
+          width={8000}
+          height={4167}
+          className="w-full absolute top-0 left-0 z-0"
+        />
+      </div>
       <div className="container mx-auto px-4">
         {/* Hero Section */}
         <section className="relative z-[1] h-[calc(60vw-70px)]">
@@ -108,7 +118,7 @@ export default function Home() {
         </section>
       </div>
       {/* Feature Section */}
-      <section className="py-16 bg-[#f7f7f5]">
+      <section className="py-16 bg-[#f7f7f5] relative z-10">
         <div className="container mx-auto px-4 max-w-[1280px]">
           <div className="flex flex-wrap justify-between items-center mb-16">
             {/* 左側手機圖片 */}
@@ -178,13 +188,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <Image
-        src="/images/feature-bg.png"
-        alt="dots"
-        width={1967}
-        height={1312}
-        className="w-full h-auto"
-      />
+
+      <section className="pb-8 bg-[#f7f7f5] -mt-16 pt-16">
+        <AutoImageCarousel
+          images={carouselImages}
+          intervalMs={3500}
+          effect="fade"
+        />
+      </section>
 
       {/* Tutorial Section */}
       <section className="py-16 bg-[#f7f7f5]">
