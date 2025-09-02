@@ -23,7 +23,7 @@ export default function AutoImageCarousel({
   rounded = "rounded-xl",
   aspectRatio,
 }: AutoImageCarouselProps) {
-  const [containerWidth, setContainerWidth] = useState(0);
+  // 移除未使用的 containerWidth 狀態，避免 ESLint 報錯
   const [calculatedHeight, setCalculatedHeight] = useState<number>(0);
   const [isMobile, setIsMobile] = useState(false);
   
@@ -70,7 +70,6 @@ export default function AutoImageCarousel({
       let width = 0;
       if (container) {
         width = container.offsetWidth;
-        setContainerWidth(width);
       }
 
       // 計算圖片比例高度
