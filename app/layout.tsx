@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/navigation";
 import Footer from "./components/footer";
-import FacebookPixel from "./components/FacebookPixel";
-import GoogleTrack from "./components/GoogleTrack";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/effect-fade";
