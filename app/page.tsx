@@ -57,7 +57,7 @@ export default function Home() {
                 />
               </div>
             </div>
-
+ 
             <div className="flex items-center justify-center lg:justify-start h-full relative">
               <div className="flex flex-col">
                 <h1 className="font-mantou text-6xl text-gray-800 leading-tight">24小時</h1>
