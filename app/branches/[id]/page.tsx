@@ -6,7 +6,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { ChevronLeft, ChevronRight } from "lucide-react"; // 引入 Lucide 圖標
 
-import { cabinetSizes } from "@/app/data/cabinetSizes";
+import cabinetsData from "@/app/data/cabinets.json";
 import React from "react";
 
 export default function BranchDetail({ params }: { params: { id: string } }) {
@@ -26,7 +26,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
 
   return (
     <div className="container mx-auto px-4 md:pt-20 pt-10">
-      <div className="h-[100vh]" id="show_size">
+      <div className="h-[100vh] hidden" id="show_size">
         <h2 className="md:text-6xl text-4xl font-bold my-20 text-center">
           倉庫尺寸
         </h2>
@@ -61,7 +61,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
               )
             }
           >
-            {cabinetSizes.map((cabinet, index) => (
+            {cabinetsData.cabinetSizes.map((cabinet, index) => (
               <div className="flex flex-col md:flex-col gap-8" key={index}>
                 <div className="h-[320px] md:h-[420px] flex items-center justify-center">
                   <Image
@@ -73,7 +73,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
                   />
                 </div>
                 <div className="">
-                  {/* <table className="w-full border-collapse border border-[#8C734B] text-[#8C734B] text-md">
+                  <table className="w-full border-collapse border border-[#8C734B] text-[#8C734B] text-md">
                   <React.Fragment key={index}>
                     <thead>
                       <tr className="bg-[#8C734B]">
@@ -132,7 +132,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
                       ))}
                     </tbody>
                   </React.Fragment>
-                </table> */}
+                </table>
                   <p className="mt-4 text-lg text-[#8C734B] text-left">
                     上表尺寸因施工因素，可能會有正負5％之施工誤差。
                     <br />

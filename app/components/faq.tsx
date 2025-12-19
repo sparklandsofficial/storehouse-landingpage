@@ -148,20 +148,20 @@ export default function FAQSection({ isAll }: { isAll: boolean }) {
   return (
     <section
       className={`py-16 ${
-        isAll ? "min-h-[calc(100vh-70px)]" : ""
+        isAll ? "min-h-[calc(100vh-70px)] " : ""
       } flex flex-col `}
     >
-      <div className="container mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-12">常見問題</h2>
+      <div className="container mx-auto px-4 ">
+        <h2 className="font-mantou text-6xl text-center text-gray-800 mb-12 ">常見問題</h2> {/*text-4xl font-bold text-center mb-12*/}
 
         {faqsToShow.map((faq, index) => (
           <Collapsible
             key={index}
             open={openItems.includes(index)}
             onOpenChange={() => toggleItem(index)}
-            className="mb-4"
+            className="mb-4 w-full max-w-2xl mx-auto "
           >
-            <CollapsibleTrigger className="flex justify-between items-center w-full p-4 bg-[#483729] text-white rounded-t-lg transition-all duration-300 ease-in-out">
+            <CollapsibleTrigger className="flex justify-between items-center w-full p-4 bg-[#E3D7C4] text-black rounded-t-lg transition-all duration-300 ease-in-out">
               <span>{faq.question}</span>
               <ChevronDown
                 className={`transform transition-transform duration-300 ${
@@ -169,7 +169,7 @@ export default function FAQSection({ isAll }: { isAll: boolean }) {
                 }`}
               />
             </CollapsibleTrigger>
-            <CollapsibleContent className="bg-white rounded-b-lg overflow-hidden transition-all duration-300 ease-in-out">
+            <CollapsibleContent className="bg-[#CCC1B0] bg-white rounded-b-lg overflow-hidden transition-all duration-300 ease-in-out">
               <div className="p-4">
                 {faq.answer.map((line, i) => (
                   <p key={i} className="mb-2">
@@ -184,8 +184,8 @@ export default function FAQSection({ isAll }: { isAll: boolean }) {
         {!isAll && (
           <div className="text-center mt-8">
             <Link href="/faq">
-              <button className="text-[#8C734B] text-2xl border-b-2 border-[#8C734B] px-2 py-1 transition duration-300 ease-in-out">
-                查看更多常見問題
+              <button className="text-[#8C734B] text-2xl border-b-2 border-[#8C734B] px-2 py-1 transition duration-300 ease-in-out w-1/2 mx-auto block">
+                更多常見問題
               </button>
             </Link>
           </div>

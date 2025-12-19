@@ -125,7 +125,7 @@ export default function Navigation() {
   );
 
   return (
-    <header className="bg-white p-4 shadow-lg fixed top-0 left-0 w-full z-50">
+    <header className="p-4 shadow-lg fixed top-0 left-0 w-full z-50 bg-[#E3D7C4]">
       <div className="container mx-auto flex justify-between items-center">
         <div className="flex items-center">
           <Link

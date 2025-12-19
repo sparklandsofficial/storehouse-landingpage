@@ -67,7 +67,7 @@ export default function RootLayout({
          * <GoogleTrack />
          */}
         <Navigation />
-        <main className="mt-[70px] relative max-w-[100vw] pb-[var(--footer-h)]">
+        <main className="mt-[70px] relative max-w-[100vw]">
           {children}
         </main>
         <Footer />
