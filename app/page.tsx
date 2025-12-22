@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 // import AutoImageCarousel from "@/components/ui/AutoImageCarousel";
@@ -29,26 +30,48 @@ export default function Home() {
   }));
   console.log("[Home] carouselImages", carouselImages);
 
+  // 櫃型選擇區：控制 6 個卡片從兩側滑入 / 滑出
+  const cabinetGridRef = useRef<HTMLDivElement | null>(null);
+  const [cabinetInView, setCabinetInView] = useState(false);
+
+  useEffect(() => {
+    if (!cabinetGridRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setCabinetInView(entry.isIntersecting);
+      },
+      { threshold: 0.2 }
+    );
+
+    observer.observe(cabinetGridRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div>
       {/* 第一區：左圖右文 - 白色底 */}
       <div className="bg-white w-full py-16 relative">
       <FadeInSection>
-        <div className="max-w-7xl mx-auto px-4 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 lg:px-8 relative">
+          {/* 垂直文字 - 桌面版：固定在 Container 左上 / 右下 */}
+          <p
+            className="hidden lg:block absolute left-0 top-4 text-gray-500 text-xs font-extralight tracking-widest"
+            style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+          >
+            Unlock your smart storage life
+          </p>
+          <p
+            className="hidden lg:block absolute right-0 bottom-4 text-gray-500 text-sm font-extralight tracking-widest"
+            style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
+          >
+            Smart Space, Easy Life
+          </p>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {/* 左邊：正方形封面圖片 */}
-            <div className="flex justify-center lg:justify-start relative">
-              {/* 垂直文字 - 在圖片左側 */}
-              <div className="absolute left-0 top-1/2 -translate-y-[220pt] -translate-x-full hidden lg:block pr-4">
-                <p
-                  className="text-gray-500 text-base font-extralight tracking-widest"
-                  style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
-                >
-                  Unlock your smart storage life
-                </p>
-              </div>
-              <div className="rounded-xl mt-16  max-md:mt-1 md:rounded-none w-80 h-80 md:w-80 md:h-80 lg:w-[30rem] lg:h-[30rem] relative overflow-hidden shadow-2xl">
+            <div className="flex justify-center lg:justify-start">
+              <div className="max-md:rounded-none rounded-xl mt-16 max-md:mt-1 md:rounded-none w-80 h-80 md:w-80 md:h-80 lg:w-[30rem] lg:h-[30rem] relative overflow-hidden shadow-2xl">
                 <Image
                   src="/images/202510/cover1.png"
                   alt="星域智空間"
@@ -58,44 +81,43 @@ export default function Home() {
               </div>
             </div>
  
-            <div className="flex items-center justify-center lg:justify-start h-full relative">
-              <div className="flex flex-col">
-                <h1 className="font-mantou text-6xl text-gray-800 leading-tight">24小時</h1>
-                <h1 className="font-mantou text-6xl text-gray-800 leading-tight lg:ml-10">智能迷你倉</h1>
-                <div className="mt-10 text-gray-600 font-light text-sm md:text-base leading-relaxed lg:ml-20">
-                  <p className="mb-2">「小空間，大自由」</p>
-                  <p className="mb-2">智慧倉儲系統，全天候守護。</p>
-                  <p className="mb-2">工業級 24hr 除濕 與 360° 倉內監控</p>
+            <div className="flex items-center justify-center lg:justify-start h-full">
+              <div className="flex flex-col w-80 md:w-80 lg:w-[30rem]">
+                {/* 描述文字 - 手機版在最上，桌面版在最下，寬度等於圖片 */}
+                <div className="mt-10 max-md:mt-0 max-md:mb-6 max-md:order-1 lg:order-3 text-gray-600 font-light text-sm md:text-base leading-relaxed lg:ml-20 text-left">
+                  <p className="mb-0">「小空間，大自由」</p>
+                  <p className="mb-0">智慧倉儲系統，全天候守護。</p>
+                  <p className="mb-0">工業級 24hr 除濕 與 360° 倉內監控</p>
                   <p>讓每件物品，都擁有最安心的歸屬。</p>
                 </div>
+                <div className="flex flex-col self-end max-md:order-1 lg:order-1">
+                  {/* 24小時 - 手機版在中間，桌面版在最上 */}
+                  <h1 className="font-mantou text-4xl max-md:text-4xl md:text-6xl text-[#35322B] leading-tight max-md:ml-5">24小時</h1>
+                  {/* 智能迷你倉 - 手機版在最下，桌面版在中間，左側留空一個字 */}
+                  <h1 className="font-mantou text-4xl max-md:text-4xl md:text-6xl text-[#35322B] leading-tight max-md:ml-10 lg:ml-10">智能迷你倉</h1>
+                </div>
               </div>
-              {/* 垂直文字 - 右側偏下 */}
-              <div className="absolute right-0 bottom-0 hidden lg:block pl-4">
-                <p
-                  className="text-gray-500 text-base font-extralight tracking-widest"
-                  style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
-                >
-                  Smart Space, Easy Life
-                </p>
-              </div>
+
             </div>
           </div>
         </div>
         </FadeInSection>
 
-        {/* 垂直文字 - 手機版：左上 / 右下 */}
-        <div className="absolute inset-0 lg:hidden pointer-events-none">
-          <div className="absolute left-4 top-4">
+        {/* 垂直文字 - 手機版：左上 / 右下（相對於 Container，而非整個 viewport）；螢幕寬度 < 390 時隱藏 */}
+        <div className="absolute inset-0 lg:hidden pointer-events-none z-10 hidden min-[390px]:block">
+          {/* 左上 */}
+          <div className="absolute left-4 top-20">
             <p
-              className="text-gray-500 text-base font-extralight tracking-widest"
+              className="text-gray-500 text-xs font-extralight tracking-widest"
               style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
             >
               Unlock your smart storage life
             </p>
           </div>
+          {/* 右下 */}
           <div className="absolute right-4 bottom-4">
             <p
-              className="text-gray-500 text-base font-extralight tracking-widest"
+              className="text-gray-500 text-sm font-extralight tracking-widest"
               style={{ writingMode: 'vertical-rl', textOrientation: 'mixed' }}
             >
               Smart Space, Easy Life
@@ -121,21 +143,34 @@ export default function Home() {
 
           {/* 櫃子卡片 - 從 JSON 讀取 */}
           <FadeInSection>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {cabinetsData.cabinets.map((cabinet) => (
-                cabinet.isSpecial ? (
+            <div
+              ref={cabinetGridRef}
+              className="grid grid-cols-1 md:grid-cols-2 gap-6"
+            >
+              {cabinetsData.cabinets.map((cabinet, index) => {
+                const isLeft = index % 2 === 0;
+                const slideBase =
+                  "transition-all duration-1000 ease-out will-change-transform will-change-opacity";
+                const slideState = cabinetInView
+                  ? "opacity-100 translate-x-0"
+                  : isLeft
+                  ? "opacity-0 -translate-x-24"
+                  : "opacity-0 translate-x-24";
+
+                return cabinet.isSpecial ? (
                   // 特別倉位卡片 - 可點擊進入詳細頁
                   <Link
                     key={cabinet.id}
                     href={`/branches/1/cabinet/${cabinet.slug || cabinet.id}`}
-                    className="block"
+                    className={`block ${slideBase} ${slideState}`}
                   >
-                    <div className="bg-[#EBDFCF] rounded-[20px] shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer max-md:h-[170px] h-[170px]">
-                      <div className="flex flex-row h-full  p-2">
-
-                        <div className="w-full  p-3 md:p-6 flex flex-col">
-                          <h3 className="font-bold text-2xl text-gray-800 mb-6 text-left">{cabinet.name}</h3>
-                          <p className="text-gray-600 text-sm text-center">
+                    <div className="bg-[#EBDFCF] rounded-[20px] shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer max-md:h-[170px] md:h-[210px]">
+                      <div className="flex flex-row h-full p-2">
+                        <div className="w-full p-3 md:p-6 flex flex-col justify-center">
+                          <h3 className="font-bold text-2xl text-[#35322B] mb-3 text-left">
+                            {cabinet.name}
+                          </h3>
+                          <p className="text-[#8C734B] text-sm md:text-base text-center">
                             {cabinet.description}
                           </p>
                         </div>
@@ -147,29 +182,36 @@ export default function Home() {
                   <Link
                     key={cabinet.id}
                     href={`/branches/1/cabinet/${cabinet.slug || cabinet.id}`}
-                    className="block"
+                    className={`block ${slideBase} ${slideState}`}
                   >
-                    <div className="bg-[#EBDFCF] rounded-[20px] shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer max-md:h-[170px]">
+                    <div className="bg-[#EBDFCF] rounded-[20px] shadow-md overflow-hidden hover:shadow-xl transition-shadow cursor-pointer max-md:h-[170px] md:h-[210px]">
                       <div className="flex flex-row h-full">
-                        <div className="w-full md:w-1/2">
+                        <div className="w-full md:w-1/2 flex items-center justify-center px-3 py-2 md:px-4 md:py-3">
                           <Image
                             src={cabinet.image!}
                             alt={cabinet.name}
                             width={200}
                             height={200}
-                            className="w-full h-32 md:h-48 object-contain"
+                            className={`w-full h-auto object-contain ${
+                              cabinet.slug === 's'
+                                ? 'max-h-32 md:max-h-48'
+                                : 'max-h-40 md:max-h-56'
+                            }`}
                           />
                         </div>
                         <div className="w-full md:w-1/2 p-3 md:p-6 flex flex-col justify-center">
-                          <h3 className="font-bold text-2xl text-gray-800 mb-2">{cabinet.name}</h3>
-                          <p className="text-gray-600 text-sm mb-3">{cabinet.dimensions}</p>
-                          <p className="text-sm">{cabinet.price}</p>
+                          <h3 className="font-bold text-2xl text-[#35322B] mb-2">{cabinet.name}</h3>
+                          <p className="text-[#35322B] text-sm mb-1">{cabinet.dimensions}</p>
+                          {/* 每月租金：用同一色系但更深、更大 */}
+                          <p className="text-[#8C734B] text-base md:text-lg font-semibold mt-1">
+                            每月 {cabinet.monthlyRent || "1234"} 元
+                          </p>
                         </div>
                       </div>
                     </div>
                   </Link>
-                )
-              ))}
+                );
+              })}
             </div>
           </FadeInSection>
         </div>

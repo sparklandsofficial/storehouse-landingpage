@@ -27,55 +27,190 @@ export default function CabinetDetail({
 
   // 櫃位功能
   const features = [
-    { icon: "🌡️", title: "24小時\n濕度控制" },
-    { icon: "🔒", title: "智能\n密碼門鎖" },
-    { icon: "📹", title: "24小時\n櫃內監控" }
+    { image: "/images/cabinet_service/1.png", title: "24小時\n濕度控制" },
+    { image: "/images/cabinet_service/2.png", title: "智能\n密碼門鎖" },
+    { image: "/images/cabinet_service/3.png", title: "24小時\n櫃內監控" }
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] py-8 md:py-16">
-      <div className="max-w-6xl mx-auto">
+    <div className="min-h-screen bg-[#FAF8F5] py-8 md:py-8 lg:py-12">
+      <div className="max-w-6xl mx-auto ">
         {/* 返回按鈕 */}
-        <div className="px-4 md:px-8">
+        {/* <div className="md:px-8 mb-2 lg:mb-3">
           <Link 
-            href={`/branches/${params.id}`}
-            className="inline-block mb-6 text-[#333333] hover:underline text-sm md:text-base"
+            href={`/#cabnetchoosing`}
+            className="inline-flex items-center gap-2 px-4 py-2 text-[#8C734B] bg-[#E3DACD] hover:bg-[#D4C5B5] hover:text-[#6B5A3F] rounded-lg transition-all duration-200 text-sm md:text-base font-medium group"
           >
-            ← 返回分店
+            <span>返回首頁</span>
           </Link>
-        </div>
+        </div> */}
 
         {/* 主容器 - 左右分欄佈局 */}
-        <div className="lg:rounded-3xl shadow-lg overflow-hidden lg:  bg-white">
-          <div className="p-6 md:p-12">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12  lg:mb-12 ">
-              {/* A區：左邊 - img1 (3D 示意圖) */}
-              <div className="flex items-center justify-center">
-                {cabinet.isSpecial ? (
-                  <div className="w-full h-64 md:h-96 bg-gray-100 rounded-[20px] flex items-center justify-center border-2 border-red-500">
-                    <p className="text-[#333333] text-center px-4">{cabinet.description}</p>
-                  </div>
-                ) : (
-                  <div className="w-full h-64 md:h-96 lg:h-[500px] relative rounded-[20px] overflow-hidden bg-gray-50 border-2 border-red-500">
-                    {cabinet.image1 && (
-                      <Image
-                        src={cabinet.image1}
-                        alt={`${cabinet.name} 3D 示意圖`}
-                        fill
-                        className="object-contain"
-                      />
-                    )}
-
-                  </div>
-                )}
-              </div>
-
+        <div className="lg:rounded-3xl lg:shadow-lg overflow-hidden lg:bg-white bg-[#FAF8F5]">
+          <div className="p-6 md:p-12 ">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 lg:mb-12">
+              {/* A區：左邊 - 實境圖 / 示意圖 - 特別倉位時保留佔版但隱藏內容，手機版 hidden */}
+                <div className={`flex justify-center md:justify-start md:items-start ${cabinet.isSpecial ? 'hidden md:flex' : ''}`}>
+                  {cabinet.isSpecial ? (
+                    <div className="md:w-[380px] w-full"></div>
+                  ) : (
+                    <div className="md:w-[380px] w-full relative overflow-hidden shadow-2xl shadow-[rgba(0,0,0,0.35)] border border-[#E3DACD] bg-white">
+                      {cabinet.image1 && (
+                        <Image
+                          src={cabinet.image1}
+                          alt={`${cabinet.name} 實境圖`}
+                          width={800}
+                          height={600}
+                          className="w-full h-auto object-contain"
+                        />
+                      )}
+                    </div>
+                  )}
+                </div>
+              {/* 手機版分隔灰線 - 以上全白，以下區塊維持原設計 */}
+              {!cabinet.isSpecial && (
+              <div className="block md:hidden h-px w-screen bg-[#bfae96] my-6 -mx-6"></div>
+              )}
               {/* B區：右邊 - 上下分區 */}
               <div className="flex flex-col gap-8 md:gap-12">
                 {/* 右邊上：規格區塊 */}
                 {!cabinet.isSpecial && (
+                  <>
+                    {/* 半格倉：上櫃 / 下櫃 各顯示一組 */}
+                    {cabinet.slug === "s" && Array.isArray(cabinet.subCabinets) ? (
+                      <div className="flex flex-col space-y-20 md:space-y-14">
+                        {cabinet.subCabinets.map((sub, idx) => (
+                          <div key={idx} className="flex flex-col space-y-6 lg:mb-10 max-md:mb-5">
+                            {/* 標題與標籤 */}
+                            <div className="flex flex-col space-y-4">
+                              <h1 className="text-[#333333] text-2xl md:text-3xl font-black">
+                                {sub.name || cabinet.name}
+                              </h1>
+                              {/* 每月租金和材積在同一行 */}
+                              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                                <div className="flex flex-col gap-1">
+                                  <p className="text-[#333333] text-xs md:text-sm font-normal opacity-70">
+                                    每月租金 <br />(此價格尚不含優惠)
+                                  </p>
+                                  {/* 金額：同色系、較大、較醒目 */}
+                                  <p className="text-[#8C734B] text-2xl md:text-3xl font-semibold">
+                                    {sub.monthlyRent || cabinet.monthlyRent || "1234"}{" "}
+                                    <span className="text-sm md:text-base font-normal text-[#333333]">
+                                      元 / 月
+                                    </span>
+                                  </p>
+                                </div>
+                                {/* 材積 Badge */}
+                                <div className="px-4 py-2 bg-[#E3DACD] rounded-full inline-flex items-center self-start md:self-auto">
+                                  <span className="text-[#333333] text-xs md:text-sm font-light">
+                                    材積 {sub.volume || cabinet.volume || 0}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* 尺寸卡片 - 水平排列 - 永遠一行3個 */}
+                            <div className="grid grid-cols-3 gap-2 md:gap-4">
+                              {/* 長 */}
+                              <div className="bg-[#E3DACD] rounded-[20px] p-2 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)] min-w-0">
+                                <span className="text-[#333333] text-sm md:text-xl font-medium mb-1 md:mb-2 whitespace-nowrap">
+                                  長
+                                </span>
+                                <span className="text-[#333333] text-lg md:text-3xl font-bold whitespace-nowrap">
+                                  {sub.width || cabinet.width || 0}cm
+                                </span>
+                              </div>
+                              {/* 寬 */}
+                              <div className="bg-[#E3DACD] rounded-[20px] p-2 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)] min-w-0">
+                                <span className="text-[#333333] text-sm md:text-xl font-medium mb-1 md:mb-2 whitespace-nowrap">
+                                  寬
+                                </span>
+                                <span className="text-[#333333] text-lg md:text-3xl font-bold whitespace-nowrap">
+                                  {sub.depth || cabinet.depth || 0}cm
+                                </span>
+                              </div>
+                              {/* 高 */}
+                              <div className="bg-[#E3DACD] rounded-[20px] p-2 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)] min-w-0">
+                                <span className="text-[#333333] text-sm md:text-xl font-medium mb-1 md:mb-2 whitespace-nowrap">
+                                  高
+                                </span>
+                                <span className="text-[#333333] text-lg md:text-3xl font-bold whitespace-nowrap">
+                                  {sub.height || cabinet.height || 0}cm
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      // 其他櫃型：維持單一組顯示
+                      <div className="flex flex-col space-y-6">
+                        {/* 標題與標籤 */}
+                        <div className="flex flex-col space-y-4">
+                          <h1 className="text-[#333333] text-3xl md:text-4xl font-black">
+                            {cabinet.name}
+                          </h1>
+                          {/* 每月租金和材積在同一行 */}
+                          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                            <div className="flex flex-col gap-1">
+                              <p className="text-[#333333] text-xs md:text-sm font-normal opacity-70">
+                                每月租金 <br />(此價格尚不含優惠)
+                              </p>
+                              {/* 金額：同色系、較大、較醒目 */}
+                              <p className="text-[#8C734B] text-2xl md:text-3xl font-semibold">
+                                {cabinet.monthlyRent || "1234"}{" "}
+                                <span className="text-sm md:text-base font-normal text-[#333333]">
+                                  元 / 月
+                                </span>
+                              </p>
+                            </div>
+                            {/* 材積 Badge */}
+                            <div className="px-4 py-2 bg-[#E3DACD] rounded-full inline-flex items-center self-start md:self-auto">
+                              <span className="text-[#333333] text-sm md:text-base font-light">
+                                材積 {cabinet.volume || 0}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* 尺寸卡片 - 水平排列 - 永遠一行3個 */}
+                        <div className="grid grid-cols-3 gap-2 md:gap-4">
+                          {/* 長 */}
+                          <div className="bg-[#E3DACD] rounded-[20px] p-2 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)] min-w-0">
+                            <span className="text-[#333333] text-sm md:text-xl font-medium mb-1 md:mb-2 whitespace-nowrap">
+                              長
+                            </span>
+                            <span className="text-[#333333] text-lg md:text-3xl font-bold whitespace-nowrap">
+                              {cabinet.width || 0}cm
+                            </span>
+                          </div>
+                          {/* 寬 */}
+                          <div className="bg-[#E3DACD] rounded-[20px] p-2 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)] min-w-0">
+                            <span className="text-[#333333] text-sm md:text-xl font-medium mb-1 md:mb-2 whitespace-nowrap">
+                              寬
+                            </span>
+                            <span className="text-[#333333] text-lg md:text-3xl font-bold whitespace-nowrap">
+                              {cabinet.depth || 0}cm
+                            </span>
+                          </div>
+                          {/* 高 */}
+                          <div className="bg-[#E3DACD] rounded-[20px] p-2 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)] min-w-0">
+                            <span className="text-[#333333] text-sm md:text-xl font-medium mb-1 md:mb-2 whitespace-nowrap">
+                              高
+                            </span>
+                            <span className="text-[#333333] text-lg md:text-3xl font-bold whitespace-nowrap">
+                              {cabinet.height || 0}cm
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </>
+                )}
+
+                {/* 特別倉位 */}
+                {cabinet.isSpecial && (
                   <div className="flex flex-col space-y-6">
-                    {/* 標題與標籤 */}
                     <div className="flex flex-col space-y-4">
                       <h1 className="text-[#333333] text-3xl md:text-4xl font-black">
                         {cabinet.name}
@@ -92,49 +227,37 @@ export default function CabinetDetail({
                           </span>
                         </div>
                       </div>
+                      <p className="text-red-500 text-xl md:text-xl font-semibold text-center">
+                        {cabinet.description}
+                      </p>
                     </div>
 
-                    {/* 尺寸卡片 - 水平排列 */}
-                    <div className="grid grid-cols-3 gap-4">
+                    {/* 尺寸卡片 - 水平排列 - 永遠一行3個 */}
+                    <div className="grid grid-cols-3 gap-2 md:gap-4">
                       {/* 長 */}
-                      <div className="bg-[#E3DACD] rounded-[20px] p-4 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)]">
-                        <span className="text-[#333333] text-xl font-medium mb-2">長</span>
-                        <span className="text-[#333333] text-2xl md:text-3xl font-bold">{cabinet.width || 0}</span>
-                        <span className="text-[#333333] text-base font-medium">cm</span>
+                      <div className="bg-[#E3DACD] rounded-[20px] p-2 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)] min-w-0">
+                        <span className="text-[#333333] text-sm md:text-xl font-medium mb-1 md:mb-2 whitespace-nowrap">長</span>
+                        <span className="text-[#333333] text-lg md:text-3xl font-bold whitespace-nowrap">{cabinet.width || "??"}cm</span>
                       </div>
                       {/* 寬 */}
-                      <div className="bg-[#E3DACD] rounded-[20px] p-4 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)]">
-                        <span className="text-[#333333] text-xl font-medium mb-2">寬</span>
-                        <span className="text-[#333333] text-2xl md:text-3xl font-bold">{cabinet.depth || 0}</span>
-                        <span className="text-[#333333] text-base font-medium">cm</span>
+                      <div className="bg-[#E3DACD] rounded-[20px] p-2 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)] min-w-0">
+                        <span className="text-[#333333] text-sm md:text-xl font-medium mb-1 md:mb-2 whitespace-nowrap">寬</span>
+                        <span className="text-[#333333] text-lg md:text-3xl font-bold whitespace-nowrap">{cabinet.depth || "??"}cm</span>
                       </div>
                       {/* 高 */}
-                      <div className="bg-[#E3DACD] rounded-[20px] p-4 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)]">
-                        <span className="text-[#333333] text-xl font-medium mb-2">高</span>
-                        <span className="text-[#333333] text-2xl md:text-3xl font-bold">{cabinet.height || 0}</span>
-                        <span className="text-[#333333] text-base font-medium">cm</span>
+                      <div className="bg-[#E3DACD] rounded-[20px] p-2 md:p-6 flex flex-col items-center justify-center shadow-[0_4px_8px_rgba(0,0,0,0.15)] min-w-0">
+                        <span className="text-[#333333] text-sm md:text-xl font-medium mb-1 md:mb-2 whitespace-nowrap">高</span>
+                        <span className="text-[#333333] text-lg md:text-3xl font-bold whitespace-nowrap">{cabinet.height || "??"}cm</span>
                       </div>
                     </div>
-                  </div>
-                )}
-
-                {/* 特別倉位 */}
-                {cabinet.isSpecial && (
-                  <div className="flex flex-col space-y-4">
-                    <h1 className="text-[#333333] text-3xl md:text-4xl font-black">
-                      {cabinet.name}
-                    </h1>
-                    <p className="text-[#333333] text-lg md:text-xl font-semibold">
-                      {cabinet.description}
-                    </p>
                   </div>
                 )}
 
                 {/* 右邊下：img2 + 櫃位功能 */}
                 <div className="space-y-6">
-                  {/* img2 */}
+                  {/* img2 - 特別倉位時隱藏 - 固定尺寸，明確設定上下左右尺寸 */}
                   {!cabinet.isSpecial && cabinet.image2 && (
-                    <div className="w-full h-48 md:h-64 relative rounded-[20px] overflow-hidden">
+                    <div className=" w-[320px] h-[320px] md:w-[380px] md:h-[380px] lg:w-[360px] lg:h-[300px] mx-auto relative rounded-[20px] overflow-hidden">
                       <Image
                         src={cabinet.image2}
                         alt={cabinet.name}
@@ -151,12 +274,18 @@ export default function CabinetDetail({
                     </h2>
                     
                     {/* 三欄式佈局 */}
-                    <div className="grid grid-cols-3 gap-4 md:gap-6">
+                    <div className="grid grid-cols-3 gap-4 md:gap-6 max-md:pb-10">
                       {features.map((feature, index) => (
                         <div key={index} className="flex flex-col items-center gap-3">
-                          {/* 圖示容器 - 淺褐色、大圓角正方形容器 */}
-                          <div className="w-16 h-16 md:w-20 md:h-20 bg-[#E3DACD] rounded-[20px] flex justify-center items-center shadow-md">
-                            <div className="text-2xl md:text-3xl">{feature.icon}</div>
+                          {/* 圖片容器 - 淺褐色、大圓角正方形容器 */}
+                          <div className="w-16 h-16 md:w-20 md:h-20 bg-[#E3DACD] rounded-[20px] flex justify-center items-center shadow-md overflow-hidden p-2">
+                            <Image
+                              src={feature.image}
+                              alt={feature.title}
+                              width={48}
+                              height={48}
+                              className="w-full h-full object-contain"
+                            />
                           </div>
                           {/* 文字 - 水平置中 */}
                           <div className="text-center">

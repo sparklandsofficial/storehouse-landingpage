@@ -4,57 +4,79 @@
       "id": 1,
       "slug": "s",
       "name": "半格倉",
-      "image": "/images/new/1.png",
-      "image1": "/images/new/1.png",
-      "image2": "/images/new/1.png",
+      "image": "/images/cabinet_images/s/sketch.png",
+      "image1": "/images/cabinet_images/s/real.jpg",
+      "image2": "/images/cabinet_images/s/ani.png",
       "dimensions": "W123×D107×H213cm",
       "volume": 36,
       "width": 123,
       "depth": 107,
       "height": 213,
-      "price": "月繳"
+      "price": "月繳",
+      "monthlyRent": "1234",
+      "subCabinets": [
+        {
+          "name": "半格倉上櫃",
+          "width": "12",
+          "depth": "13",
+          "height": "92",
+          "volume": "36",
+          "monthlyRent": "1234"
+        },
+        {
+          "name": "半格倉下櫃",
+          "width": "12",
+          "depth": "32",
+          "height": "42",
+          "volume": "38",
+          "monthlyRent": "1234"
+        }
+      ]
     },
     {
       "id": 2,
       "slug": "m",
       "name": "一般倉",
-      "image": "/images/new/2.png",
-      "image1": "/images/new/2.png",
-      "image2": "/images/new/2.png",
+      "image": "/images/cabinet_images/m/sketch.png",
+      "image1": "/images/cabinet_images/m/real.jpg",
+      "image2": "/images/cabinet_images/m/ani.png",
       "dimensions": "W150×D120×H213cm",
       "volume": 40,
       "width": 150,
       "depth": 120,
       "height": 213,
-      "price": "月繳"
+      "price": "月繳",
+      "monthlyRent": "1234"
     },
     {
       "id": 3,
       "slug": "l",
       "name": "加大倉",
-      "image": "/images/new/3.png",
-      "image1": "/images/new/3.png",
-      "image2": "/images/new/3.png",
+      "image": "/images/cabinet_images/l/sketch.png",
+      "image1": "/images/cabinet_images/l/real.jpg",
+      "image2": "/images/cabinet_images/l/ani.png",
       "dimensions": "W180×D150×H213cm",
       "volume": 50,
       "width": 180,
       "depth": 150,
       "height": 213,
-      "price": "月繳"
+      "price": "月繳",
+      "monthlyRent": "1234"
     },
     {
       "id": 4,
       "slug": "xl",
       "name": "特大倉",
-      "image": "/images/new/4.png",
-      "image1": "/images/new/4.png",
-      "image2": "/images/new/4.png",
+      "image": "/images/cabinet_images/xl/sketch.png",
+      "image1": "/images/cabinet_images/xl/real.jpg",
+      "image2": "/images/cabinet_images/xl/ani.png",
       "dimensions": "W200×D180×H213cm",
       "volume": 60,
       "width": 200,
       "depth": 180,
       "height": 213,
-      "price": "月繳"
+      "price": "月繳",
+      "monthlyRent": "1234"
     },
     {
       "id": 5,
@@ -64,7 +86,11 @@
       "dimensions": null,
       "price": null,
       "isSpecial": true,
-      "description": "大型櫃位點此查看"
+      "description": "特別倉位可盡量配合您的需求進行調節，請洽客服人員進行調整",
+      "width": "??",
+      "depth": "??",
+      "height": "??",
+      "volume": 619
     }
   ],
   "cabinetSizes": [
