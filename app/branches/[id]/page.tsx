@@ -193,7 +193,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
               className="hover:opacity-80 transition-opacity duration-300"
             >
               <Image
-                src="/images/ios-download.png"
+                src="/images/ios-download.webp"
                 alt="Download on the App Store"
                 width={1214}
                 height={407}
@@ -206,7 +206,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
               className="hover:opacity-80 transition-opacity duration-300"
             >
               <Image
-                src="/images/android-download.png"
+                src="/images/android-download.webp"
                 alt="GET IT ON Google Play"
                 width={1342}
                 height={398}
@@ -334,7 +334,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
               className="hover:opacity-80 transition-opacity duration-300"
             >
               <Image
-                src="/images/ios-download.png"
+                src="/images/ios-download.webp"
                 alt="Download on the App Store"
                 width={1214}
                 height={407}
@@ -347,7 +347,7 @@ export default function BranchDetail({ params }: { params: { id: string } }) {
               className="hover:opacity-80 transition-opacity duration-300"
             >
               <Image
-                src="/images/android-download.png"
+                src="/images/android-download.webp"
                 alt="GET IT ON Google Play"
                 width={1342}
                 height={398}

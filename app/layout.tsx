@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Navigation from "./components/navigation";
 import Footer from "./components/footer";
-import "swiper/css";
-import "swiper/css/pagination";
-import "swiper/css/effect-fade";
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "星域智空間 | 您的收納小管家",
@@ -21,7 +16,6 @@ export default function RootLayout({
   return (
     <html lang="zh-TW">
       <head>
-        {/* 新版：Google Tag Manager (head) */}
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -34,21 +28,13 @@ export default function RootLayout({
           `,
           }}
         />
-        {/* End Google Tag Manager */}
-
-        {/* 舊版（已停用保留）：直插 gtag 與事件碼 */}
-        {/**
-         * 舊版：直插 gtag (Google Ads AW-528010636) 及三段事件碼
-         * 已停用，避免與 GTM 重覆。保留作日後參考。
-         *
-         * <script async src="https://www.googletagmanager.com/gtag/js?id=AW-528010636" />
-         * <script id="google-track">...</script>
-         * <script> // iosdownload 轉換事件 ... </script>
-         * <script> // androiddownload 轉換事件 ... </script>
-         * <script> // line 按鈕 轉換事件 ... </script>
-         */}
+        {/* Material Symbols Outlined */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=swap"
+        />
       </head>
-      <body className={inter.className}>
+      <body>
         {/* 新版：Google Tag Manager (noscript) 放在 <body> 開頭後 */}
         {/* Google Tag Manager (noscript) */}
         <noscript>
@@ -61,13 +47,8 @@ export default function RootLayout({
         </noscript>
         {/* End Google Tag Manager (noscript) */}
 
-        {/* 舊版（已停用保留）：Facebook Pixel 與 GoogleTrack */}
-        {/**
-         * <FacebookPixel />
-         * <GoogleTrack />
-         */}
         <Navigation />
-        <main className="mt-[70px] relative max-w-[100vw]">
+        <main className="relative max-w-[100vw]">
           {children}
         </main>
         <Footer />

@@ -2,163 +2,74 @@
 
 import Link from "next/link";
 import Image from "next/image";
-// import { scrollToElement } from "@/lib/utils";
-import { useState, useEffect } from "react";
-import { Menu } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-  DropdownMenuSub,
-  DropdownMenuSubContent,
-  DropdownMenuSubTrigger,
-} from "@/components/ui/dropdown-menu";
+import { usePathname } from "next/navigation";
 
 export default function Navigation() {
-  const [isMobile, setIsMobile] = useState(false);
-  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
 
-  useEffect(() => {
-    const checkIsMobile = () => {
-      setIsMobile(window.innerWidth < 1024);
-    };
-    checkIsMobile();
-    window.addEventListener("resize", checkIsMobile);
-    return () => window.removeEventListener("resize", checkIsMobile);
-  }, []);
-
-  const NavItems = () => (
-    <ul
-      className={`${isMobile ? "flex flex-col space-y-4" : "flex space-x-12"}`}
-    >
-      <li>
-        <Link
-          href="/"
-          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg"
-        >
-          首頁
-        </Link>
-      </li>
-      <li>
-        <Link
-          href="/about"
-          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg"
-        >
-          關於星域
-        </Link>
-      </li>
-      <li>
-        <Link
-          href="/branches/1" //有新倉就要改回branches/   目前是讓客人直接進入台北延吉店看倉的規格，但有新倉的話就不能這樣搞
-          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg"
-        >
-          租倉據點
-        </Link>
-      </li>
-      <li>
-        <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
-          <div
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
-          >
-            <DropdownMenuTrigger className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg">
-              加盟辦法
-            </DropdownMenuTrigger>
-            <DropdownMenuContent
-              onMouseEnter={() => setIsOpen(true)}
-              onMouseLeave={() => setIsOpen(false)}
-              className="w-48"
-            >
-              <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
-                <Link href="/franchise/advantages">加盟優勢</Link>
-              </DropdownMenuItem>
-              <DropdownMenuSub>
-                <DropdownMenuSubTrigger className="py-3 text-base font-medium hover:bg-orange-50">
-                  加盟方式
-                </DropdownMenuSubTrigger>
-                <DropdownMenuSubContent className="w-48">
-                  <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
-                    <Link href="/franchise/process">加盟流程</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
-                    <Link href="/franchise/requirements">加盟申請條件</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
-                    <Link href="/franchise/types">加盟型態</Link>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
-                    <Link href="/franchise/investment">雙方投資 & 資源</Link>
-                  </DropdownMenuItem>
-                </DropdownMenuSubContent>
-              </DropdownMenuSub>
-              <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
-                <Link href="/franchise/apply">我要加盟</Link>
-              </DropdownMenuItem>
-              <DropdownMenuItem className="py-3 text-base font-medium hover:bg-orange-50">
-                <Link href="/franchise/contact">加盟聯繫</Link>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </div>
-        </DropdownMenu>
-      </li>
-      <li>
-        <Link
-          href="/faq"
-          className="text-[#483729] font-bold hover:text-[#FF9E18] transition-colors duration-300 ease-in-out text-lg"
-        >
-          常見問題
-        </Link>
-      </li>
-      <li>
-        <a
-          href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL}
-          target="_blank"
-          className="bg-[#FF9E18] text-white px-6 py-1 rounded-full hover:bg-orange-500 transition-colors duration-300 ease-in-out text-lg"
-        >
-          APP下載
-        </a>
-      </li>
-    </ul>
-  );
+  const isActive = (path: string) => pathname === path;
 
   return (
-    <header className="p-4 shadow-lg fixed top-0 left-0 w-full z-50 bg-[#E3D7C4]">
-      <div className="container mx-auto flex justify-between items-center">
-        <div className="flex items-center">
+    <header className="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-outline-variant/10">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-4 flex items-center justify-between">
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/logo.png"
+            alt="Spark Space 星域智空間"
+            width={120}
+            height={40}
+            className="h-10 w-auto object-contain"
+            priority
+          />
+        </Link>
+        <nav className="hidden md:flex items-center gap-8">
           <Link
-            href="/"
-            className="flex items-center space-x-2 hover:opacity-80 transition-opacity duration-300"
+            href="/pricing"
+            className={`font-label text-sm tracking-wide transition-colors ${
+              isActive("/pricing")
+                ? "text-primary font-bold border-b-2 border-primary pb-0.5"
+                : "text-on-surface-variant hover:text-primary"
+            }`}
           >
-            <Image
-              src="/images/logo.png"
-              alt="星域智空間 Logo"
-              width={200}
-              height={200}
-              className="mr-2 md:w-[200px] w-[150px]"
-            />
+            倉位方案
           </Link>
-        </div>
-        {isMobile ? (
-          <Sheet>
-            <SheetTrigger asChild>
-              <Button variant="outline" size="icon">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent>
-              <nav className="mt-6">
-                <NavItems />
-              </nav>
-            </SheetContent>
-          </Sheet>
-        ) : (
-          <nav>
-            <NavItems />
-          </nav>
-        )}
+          <Link
+            href="/process"
+            className={`font-label text-sm tracking-wide transition-colors ${
+              isActive("/process")
+                ? "text-primary font-bold border-b-2 border-primary pb-0.5"
+                : "text-on-surface-variant hover:text-primary"
+            }`}
+          >
+            租倉流程
+          </Link>
+          <Link
+            href="/locations"
+            className={`font-label text-sm tracking-wide transition-colors ${
+              isActive("/locations")
+                ? "text-primary font-bold border-b-2 border-primary pb-0.5"
+                : "text-on-surface-variant hover:text-primary"
+            }`}
+          >
+            延吉店
+          </Link>
+          <Link
+            href="/faq"
+            className={`font-label text-sm tracking-wide transition-colors ${
+              isActive("/faq")
+                ? "text-primary font-bold border-b-2 border-primary pb-0.5"
+                : "text-on-surface-variant hover:text-primary"
+            }`}
+          >
+            常見問題
+          </Link>
+        </nav>
+        <Link
+          href="/pricing"
+          className="butler-gradient text-white px-5 py-2.5 rounded-xl text-sm font-bold cloud-shadow hover:scale-[1.02] active:scale-[0.98] transition-transform font-label"
+        >
+          立即租倉
+        </Link>
       </div>
     </header>
   );
