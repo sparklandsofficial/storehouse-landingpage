@@ -31,7 +31,7 @@ export default function Footer() {
                 <MessageCircle className="w-6 h-6" />
               </a>
               <a
-                href="https://www.facebook.com/SparkSpace.tw"
+                href="https://www.facebook.com/profile.php?id=61563342058017"
                 target="_blank"
                 rel="noopener"
                 className="text-inverse-on-surface/50 hover:text-inverse-on-surface transition-colors"
@@ -40,7 +40,7 @@ export default function Footer() {
                 <Facebook className="w-6 h-6" />
               </a>
               <a
-                href="https://www.instagram.com/sparkspace.tw"
+                href="https://www.instagram.com/spark.space_storage"
                 target="_blank"
                 rel="noopener"
                 className="text-inverse-on-surface/50 hover:text-inverse-on-surface transition-colors"
