@@ -48,7 +48,7 @@ export default function RootLayout({
         {/* End Google Tag Manager (noscript) */}
 
         <Navigation />
-        <main className="relative max-w-[100vw]">
+        <main className="relative w-full">
           {children}
         </main>
         <Footer />

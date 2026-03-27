@@ -165,61 +165,17 @@ export default function Process() {
               </div>
             </div>
 
-            {/* APP mockup */}
-            <div className="flex justify-center lg:justify-end">
-              <div className="w-72 bg-on-surface rounded-[2.5rem] p-3 shadow-[0_40px_80px_rgba(0,0,0,0.25)]">
-                <div className="bg-surface rounded-[2rem] overflow-hidden">
-                  <div className="bg-on-surface px-6 pt-4 pb-3">
-                    <div className="flex items-center justify-between mb-4">
-                      <span className="text-primary-container font-black text-lg font-headline">SPARK</span>
-                      <span className="material-symbols-outlined text-inverse-on-surface/60 text-[18px]">notifications</span>
-                    </div>
-                  </div>
-                  <div className="px-4 py-4 space-y-3">
-                    <div className="bg-primary rounded-xl p-4">
-                      <div className="text-white/70 text-xs font-label mb-1">我的倉位</div>
-                      <div className="text-white font-black text-xl font-headline">延吉店 A102</div>
-                      <div className="text-primary-container text-sm font-label mt-1">M 號 · 租用中</div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-3">
-                      <div className="bg-surface-container rounded-xl p-3 text-center">
-                        <span className="material-symbols-outlined text-primary text-[22px]">thermostat</span>
-                        <div className="font-black text-on-surface font-label">22°C</div>
-                        <div className="text-xs text-on-surface-variant font-label">溫度</div>
-                      </div>
-                      <div className="bg-surface-container rounded-xl p-3 text-center">
-                        <span className="material-symbols-outlined text-primary text-[22px]">humidity_mid</span>
-                        <div className="font-black text-on-surface font-label">45%</div>
-                        <div className="text-xs text-on-surface-variant font-label">濕度</div>
-                      </div>
-                    </div>
-                    <div className="bg-surface-container rounded-xl p-4 flex items-center gap-3">
-                      <span className="material-symbols-outlined text-primary text-[20px]">lock_open</span>
-                      <span className="text-sm font-bold text-on-surface">一鍵開門入門</span>
-                      <span className="ml-auto w-8 h-8 butler-gradient rounded-lg flex items-center justify-center">
-                        <span className="material-symbols-outlined text-white text-[16px]">chevron_right</span>
-                      </span>
-                    </div>
-                    <div className="bg-surface-container rounded-xl p-4 flex items-center gap-3">
-                      <span className="material-symbols-outlined text-primary text-[20px]">visibility</span>
-                      <span className="text-sm font-bold text-on-surface">查看監控影像</span>
-                      <span className="ml-auto w-8 h-8 butler-gradient rounded-lg flex items-center justify-center">
-                        <span className="material-symbols-outlined text-white text-[16px]">chevron_right</span>
-                      </span>
-                    </div>
-                    <div className="bg-surface-container rounded-xl overflow-hidden">
-                      <div className="bg-on-surface/80 aspect-video flex items-center justify-center">
-                        <span className="material-symbols-outlined text-inverse-on-surface/40 text-4xl">play_circle</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="px-4 py-3 flex justify-around border-t border-outline-variant/10">
-                    <span className="material-symbols-outlined text-primary text-[22px]">home</span>
-                    <span className="material-symbols-outlined text-on-surface-variant text-[22px]">grid_view</span>
-                    <span className="material-symbols-outlined text-on-surface-variant text-[22px]">receipt_long</span>
-                    <span className="material-symbols-outlined text-on-surface-variant text-[22px]">person</span>
-                  </div>
-                </div>
+            {/* APP mockup (old design image) */}
+            <div className="flex items-center justify-center lg:justify-end">
+              <div className="w-[300px] md:w-[340px] lg:w-[400px]">
+                <Image
+                  src="/images/phone_app_capture.png"
+                  alt="Spark Space App 畫面"
+                  width={800}
+                  height={1600}
+                  className="w-full h-auto drop-shadow-[0_32px_64px_rgba(0,0,0,0.25)]"
+                  priority
+                />
               </div>
             </div>
           </div>

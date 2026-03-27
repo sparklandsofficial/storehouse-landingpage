@@ -45,10 +45,15 @@ export default function TestimonialCarousel() {
   };
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
-    return () => clearInterval(timer);
+    if (testimonials.length <= 1) return;
+
+    const timer = setTimeout(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearTimeout(timer);
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [testimonials.length]);
+  }, [currentIndex, testimonials.length]);
 
   const variants = {
     enter: (dir: number) => ({ x: dir > 0 ? 1000 : -1000, opacity: 0 }),

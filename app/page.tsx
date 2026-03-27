@@ -5,7 +5,7 @@ import TestimonialCarousel from "./components/TestimonialCarousel";
 
 export default function Home() {
   // Hero 背景暗度（0 = 不暗，1 = 全黑）。你之後就調呢個數值即可。
-  const HERO_DIM = 0.80;
+  const HERO_DIM = 0.20;
 
   return (
     <div className="pt-20">
@@ -22,14 +22,14 @@ export default function Home() {
             className="w-full h-full bg-cover bg-center"
             style={{
               backgroundImage:
-                "url('/images/202510/cover1.png')",
+                "url('/images/image_group_1/1.jpg')",
             }}
           />
         </div>
         <div className="relative z-20 text-center max-w-4xl px-6 be-1">
           <h1 className="text-white font-headline font-black leading-[1.05] tracking-tight mb-6">
-            <span className="text-5xl md:text-7xl block">放不下的，</span>
-            <span className="text-5xl md:text-7xl block text-primary-container">交給我們。</span>
+            <span className="text-5xl md:text-7xl block">放不下的</span>
+            <span className="text-5xl md:text-7xl block text-primary-container">交給我們</span>
           </h1>
           <p className="text-white/80 text-lg md:text-xl font-normal mb-4 max-w-xl mx-auto leading-relaxed">
             24 小時全程手機操作，從租倉到開門，
@@ -85,18 +85,18 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {[
-              { icon: "🏠", title: "裝修過渡", desc: "家具沒地方放的那幾個月，先搬進來，裝好再搬回去。" },
-              { icon: "📦", title: "電商備貨", desc: "庫存不再佔滿家裡，24 小時隨時進出補貨取件。", bg: "bg-tertiary-fixed" },
-              { icon: "🧹", title: "換季收納", desc: "行李箱、棉被、不捨得丟的東西，都有地方好好放。", bg: "bg-primary-fixed" },
-              { icon: "🏢", title: "小公司存貨", desc: "不用租整個倉庫，按需彈性租倉，節省辦公室空間。" },
+              { icon: "home_repair_service", title: "裝修過渡", desc: "家具沒地方放的那幾個月，先搬進來，裝好再搬回去。" },
+              { icon: "inventory_2", title: "電商備貨", desc: "庫存不再佔滿家裡，24 小時隨時進出補貨取件。", bg: "bg-tertiary-fixed" },
+              { icon: "checkroom", title: "換季收納", desc: "行李箱、棉被、不捨得丟的東西，都有地方好好放。", bg: "bg-primary-fixed" },
+              { icon: "business_center", title: "小公司存貨", desc: "不用租整個倉庫，按需彈性租倉，節省辦公室空間。" },
             ].map((item) => (
               <Link
                 key={item.title}
                 href="/pricing"
                 className="scene-card group bg-surface-container-lowest cloud-shadow rounded-2xl p-7 flex flex-col gap-4 hover:-translate-y-1 transition-all border border-outline-variant/5"
               >
-                <div className={`w-12 h-12 ${item.bg ?? "bg-secondary-container"} rounded-xl flex items-center justify-center text-2xl`}>
-                  {item.icon}
+                <div className={`w-12 h-12 ${item.bg ?? "bg-secondary-container"} rounded-xl flex items-center justify-center`}>
+                  <span className="material-symbols-outlined text-[24px] text-primary">{item.icon}</span>
                 </div>
                 <div>
                   <h3 className="font-headline font-bold text-lg text-on-surface mb-1">{item.title}</h3>

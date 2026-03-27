@@ -162,11 +162,11 @@ export default function Locations() {
               },
               {
                 icon: "directions_car", bg: "bg-secondary-container", color: "text-secondary", title: "開車停車",
-                items: ["延吉街路邊停車格（白線計時）", "忠孝東路四段地下停車場，步行約 3 分鐘", "光復南路停車場，步行約 5 分鐘"],
+                items: ["八德路路邊停車格", "北寧路路邊停車格，步行約 2 分鐘", "台北田徑場地下停車場，步行約 3 分鐘"],
               },
               {
                 icon: "local_shipping", bg: "bg-tertiary-fixed", color: "text-tertiary", title: "搬家公司直送",
-                items: ["可直接請搬家公司將物品送至延吉街門口", "B1 入口備有推車供搬運使用", "如需協助請提前加 LINE 告知"],
+                items: ["可直接請搬家公司將物品送至延吉街門口", "入口備有輸送帶供搬運使用", "如需協助請提前加 LINE 告知"],
               },
             ].map((c) => (
               <div key={c.title} className="bg-surface-container-lowest cloud-shadow rounded-2xl p-7 border border-outline-variant/5">

@@ -208,7 +208,7 @@ export default function Pricing() {
               <div className="text-on-surface-variant text-sm mb-6 font-label">最彈性</div>
               <div className="w-full h-px bg-outline-variant/20 mb-6" />
               <div className="text-on-surface font-bold text-lg mb-2 font-headline">原價計算</div>
-              <div className="text-on-surface-variant text-xs font-label">隨時可退，按日計費</div>
+              <div className="text-on-surface-variant text-xs font-label">隨時可退，流程簡便</div>
             </div>
             <div className="plan-card bg-surface-container-lowest rounded-2xl p-7 flex flex-col items-center text-center border-2 border-primary/20 shadow-[0_10px_30px_rgba(137,81,0,0.08)] relative">
               <div className="absolute -top-3 left-1/2 -translate-x-1/2 butler-gradient text-white text-[10px] font-bold font-label px-3 py-1 rounded-full tracking-widest">HOT</div>

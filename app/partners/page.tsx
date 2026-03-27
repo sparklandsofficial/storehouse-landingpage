@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useRef, ChangeEvent } from "react";
+import { useState, useRef, ChangeEvent, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
 
 interface OptImage { id: string; url: string; size: number; optimizedSize: number; }
@@ -26,10 +26,45 @@ function optimizeImage(file: File): Promise<{ url: string; size: number }> {
   });
 }
 
+// ── 前端輕量驗證 ──────────────────────────────────────────────────────────────
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const PHONE_RE = /^(0[2-9]\d{7,8}|09\d{8})$/;
+
+interface FormErrors {
+  name?: string;
+  email?: string;
+  phone?: string;
+}
+
+function validateForm(form: HTMLFormElement): FormErrors {
+  const errors: FormErrors = {};
+  const name = (form.elements.namedItem("name") as HTMLInputElement)?.value.trim();
+  const email = (form.elements.namedItem("email") as HTMLInputElement)?.value.trim();
+  const phone = (form.elements.namedItem("phone") as HTMLInputElement)?.value.replace(/[\s\-]/g, "");
+
+  if (!name) errors.name = "請填寫姓名";
+  else if (name.length > 50) errors.name = "姓名不得超過 50 字";
+
+  if (!email) errors.email = "請填寫電子信箱";
+  else if (!EMAIL_RE.test(email)) errors.email = "電子信箱格式不正確";
+
+  if (!phone) errors.phone = "請填寫聯絡電話";
+  else if (!PHONE_RE.test(phone)) errors.phone = "請輸入有效的台灣電話（市話或手機）";
+
+  return errors;
+}
+
+type SubmitStatus = "idle" | "loading" | "success" | "error";
+
 export default function Partners() {
   const [images, setImages] = useState<OptImage[]>([]);
   const [optimizing, setOptimizing] = useState(false);
   const fileRef = useRef<HTMLInputElement>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
+  const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleFiles = async (e: ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files;
@@ -43,6 +78,54 @@ export default function Partners() {
     setImages((p) => [...p, ...next]);
     setOptimizing(false);
     if (fileRef.current) fileRef.current.value = "";
+  };
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const form = e.currentTarget;
+
+    const errors = validateForm(form);
+    setFieldErrors(errors);
+    if (Object.keys(errors).length > 0) return;
+
+    setSubmitStatus("loading");
+    setErrorMessage("");
+
+    const data = new FormData(form);
+    const partnerTypes = data.getAll("type") as string[];
+
+    const payload = {
+      name: (data.get("name") as string)?.trim(),
+      email: (data.get("email") as string)?.trim(),
+      phone: (data.get("phone") as string)?.trim(),
+      location: (data.get("location") as string)?.trim(),
+      area: (data.get("area") as string)?.trim(),
+      partnerTypes,
+      message: (data.get("message") as string)?.trim(),
+      website: (data.get("website") as string) ?? "",
+    };
+
+    try {
+      const res = await fetch("/api/frontend/landingpage-partners-submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const result = await res.json().catch(() => ({}));
+
+      if (res.ok && result.success) {
+        setSubmitStatus("success");
+        form.reset();
+        setFieldErrors({});
+      } else {
+        setSubmitStatus("error");
+        setErrorMessage(result.message || "送出失敗，請稍後再試");
+        if (result.errors) setFieldErrors(result.errors as FormErrors);
+      }
+    } catch {
+      setSubmitStatus("error");
+      setErrorMessage("網路錯誤，請確認連線後再試");
+    }
   };
 
   return (
@@ -128,71 +211,7 @@ export default function Partners() {
       </section>
 
       {/* PARTNER UPLOAD */}
-      <section className="py-24 px-6 lg:px-12 bg-surface-container-lowest border-y border-outline-variant/10 be-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <span className="font-label text-primary font-bold tracking-widest uppercase text-xs block mb-3">合作夥伴專區</span>
-            <h2 className="font-headline text-3xl md:text-4xl font-black text-on-surface tracking-tight mb-4">上傳案例實景圖</h2>
-            <p className="text-on-surface-variant text-lg max-w-2xl mx-auto">歡迎合作夥伴上傳門市實景照片。系統將自動進行網頁效能優化（縮放與壓縮）。</p>
-          </div>
 
-          <div className="bg-surface-container-low rounded-[2rem] p-8 md:p-12 border border-dashed border-outline-variant/30 text-center relative overflow-hidden">
-            <input type="file" ref={fileRef} onChange={handleFiles} multiple accept="image/*" className="hidden" />
-            <AnimatePresence mode="wait">
-              {images.length === 0 ? (
-                <motion.div key="empty" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -10 }} className="flex flex-col items-center">
-                  <div className="w-20 h-20 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                    <span className="material-symbols-outlined text-primary text-4xl">cloud_upload</span>
-                  </div>
-                  <h3 className="font-headline text-xl font-bold text-on-surface mb-2">拖放圖片或點擊上傳</h3>
-                  <p className="text-on-surface-variant text-sm mb-8">支援 JPG, PNG, WEBP (單張最大 10MB)</p>
-                  <button onClick={() => fileRef.current?.click()} className="bg-primary text-white px-8 py-3.5 rounded-xl font-bold text-sm hover:scale-[1.02] transition-transform cloud-shadow">
-                    選擇檔案
-                  </button>
-                </motion.div>
-              ) : (
-                <motion.div key="grid" initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="space-y-8">
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                    {images.map((img) => (
-                      <motion.div layout key={img.id} initial={{ scale: 0.9, opacity: 0 }} animate={{ scale: 1, opacity: 1 }} className="group relative aspect-square rounded-2xl overflow-hidden bg-surface-container-high border border-outline-variant/10">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img src={img.url} alt="Preview" className="w-full h-full object-cover" />
-                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center p-4">
-                          <div className="text-white text-[10px] font-bold uppercase tracking-widest mb-1">已優化</div>
-                          <div className="text-white/80 text-[10px]">{(img.size / 1024).toFixed(0)}KB → {(img.optimizedSize / 1024).toFixed(0)}KB</div>
-                          <button onClick={() => setImages((p) => p.filter((x) => x.id !== img.id))} className="mt-3 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center hover:scale-110 transition-transform">
-                            <span className="material-symbols-outlined text-[18px]">delete</span>
-                          </button>
-                        </div>
-                      </motion.div>
-                    ))}
-                    <button onClick={() => fileRef.current?.click()} className="aspect-square rounded-2xl border-2 border-dashed border-outline-variant/30 flex flex-col items-center justify-center hover:bg-surface-container-high transition-colors group">
-                      <span className="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors text-3xl mb-2">add_photo_alternate</span>
-                      <span className="text-xs font-bold text-on-surface-variant">繼續新增</span>
-                    </button>
-                  </div>
-                  <div className="flex flex-col sm:flex-row items-center justify-between gap-6 pt-8 border-t border-outline-variant/10">
-                    <div className="text-left">
-                      <div className="text-sm font-bold text-on-surface">共 {images.length} 張圖片</div>
-                      <div className="text-xs text-on-surface-variant">總計節省約 {((images.reduce((a, i) => a + (i.size - i.optimizedSize), 0)) / 1024 / 1024).toFixed(2)} MB 頻寬</div>
-                    </div>
-                    <div className="flex gap-3">
-                      <button onClick={() => setImages([])} className="px-6 py-3 rounded-xl font-bold text-sm text-on-surface-variant hover:bg-surface-container-high transition-colors">全部清除</button>
-                      <button className="butler-gradient text-white px-8 py-3 rounded-xl font-bold text-sm cloud-shadow hover:scale-[1.02] transition-transform">確認提交案例</button>
-                    </div>
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-            {optimizing && (
-              <div className="absolute inset-0 bg-surface-container-low/80 backdrop-blur-sm z-50 flex flex-col items-center justify-center">
-                <div className="w-12 h-12 border-4 border-primary/20 border-t-primary rounded-full animate-spin mb-4" />
-                <div className="font-bold text-on-surface">正在優化圖片效能...</div>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
 
       {/* CONTACT FORM */}
       <section id="contact-form" className="py-24 px-6 lg:px-12">
@@ -203,20 +222,75 @@ export default function Partners() {
             <p className="text-on-surface-variant text-lg">填寫基本資料，我們會在三個工作日內與你聯繫。</p>
           </div>
           <div className="bg-surface-container-lowest cloud-shadow rounded-2xl p-8 md:p-10 border border-outline-variant/5">
-            <form className="space-y-6">
+
+            {/* 成功提示 */}
+            <AnimatePresence>
+              {submitStatus === "success" && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  className="mb-6 flex items-start gap-3 bg-primary/10 border border-primary/30 text-primary rounded-xl px-5 py-4"
+                >
+                  <span className="material-symbols-outlined text-[22px] mt-0.5 shrink-0">check_circle</span>
+                  <div>
+                    <p className="font-bold text-sm">申請已送出！</p>
+                    <p className="text-xs mt-0.5 text-primary/80">我們收到你的合作申請，將在三個工作日內與你聯繫。</p>
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* 系統錯誤提示 */}
+            <AnimatePresence>
+              {submitStatus === "error" && errorMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  className="mb-6 flex items-start gap-3 bg-error/10 border border-error/30 text-error rounded-xl px-5 py-4"
+                >
+                  <span className="material-symbols-outlined text-[22px] mt-0.5 shrink-0">error</span>
+                  <p className="text-sm">{errorMessage}</p>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-6">
+              {/* Honeypot：人類看不到，bot 會填，後端見到有值就靜默丟棄 */}
+              <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", width: 0, height: 0, overflow: "hidden" }}>
+                <label htmlFor="hp-website">Website</label>
+                <input id="hp-website" type="text" name="website" tabIndex={-1} autoComplete="off" />
+              </div>
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div>
                   <label className="font-label text-xs font-bold uppercase tracking-wide text-on-surface-variant block mb-2">姓名 *</label>
-                  <input type="text" name="name" required placeholder="您的姓名" className="w-full px-4 py-3 bg-surface-container rounded-xl text-on-surface placeholder-on-surface-variant/40 focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm" />
+                  <input
+                    type="text" name="name" placeholder="您的姓名"
+                    onChange={() => fieldErrors.name && setFieldErrors((p) => ({ ...p, name: undefined }))}
+                    className={`w-full px-4 py-3 bg-surface-container rounded-xl text-on-surface placeholder-on-surface-variant/40 focus:outline-none focus:ring-2 text-sm transition-shadow ${fieldErrors.name ? "ring-2 ring-error/60 focus:ring-error/60" : "focus:ring-primary/30"}`}
+                  />
+                  {fieldErrors.name && <p className="text-error text-xs mt-1.5 font-label">{fieldErrors.name}</p>}
                 </div>
                 <div>
                   <label className="font-label text-xs font-bold uppercase tracking-wide text-on-surface-variant block mb-2">聯絡電話 *</label>
-                  <input type="tel" name="phone" required placeholder="0912-345-678" className="w-full px-4 py-3 bg-surface-container rounded-xl text-on-surface placeholder-on-surface-variant/40 focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm" />
+                  <input
+                    type="tel" name="phone" placeholder="0912-345-678"
+                    onChange={() => fieldErrors.phone && setFieldErrors((p) => ({ ...p, phone: undefined }))}
+                    className={`w-full px-4 py-3 bg-surface-container rounded-xl text-on-surface placeholder-on-surface-variant/40 focus:outline-none focus:ring-2 text-sm transition-shadow ${fieldErrors.phone ? "ring-2 ring-error/60 focus:ring-error/60" : "focus:ring-primary/30"}`}
+                  />
+                  {fieldErrors.phone && <p className="text-error text-xs mt-1.5 font-label">{fieldErrors.phone}</p>}
                 </div>
               </div>
               <div>
                 <label className="font-label text-xs font-bold uppercase tracking-wide text-on-surface-variant block mb-2">電子信箱 *</label>
-                <input type="email" name="email" required placeholder="your@email.com" className="w-full px-4 py-3 bg-surface-container rounded-xl text-on-surface placeholder-on-surface-variant/40 focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm" />
+                <input
+                  type="email" name="email" placeholder="your@email.com"
+                  onChange={() => fieldErrors.email && setFieldErrors((p) => ({ ...p, email: undefined }))}
+                  className={`w-full px-4 py-3 bg-surface-container rounded-xl text-on-surface placeholder-on-surface-variant/40 focus:outline-none focus:ring-2 text-sm transition-shadow ${fieldErrors.email ? "ring-2 ring-error/60 focus:ring-error/60" : "focus:ring-primary/30"}`}
+                />
+                {fieldErrors.email && <p className="text-error text-xs mt-1.5 font-label">{fieldErrors.email}</p>}
               </div>
               <div>
                 <label className="font-label text-xs font-bold uppercase tracking-wide text-on-surface-variant block mb-2">空間所在區域</label>
@@ -247,8 +321,20 @@ export default function Partners() {
                 <label className="font-label text-xs font-bold uppercase tracking-wide text-on-surface-variant block mb-2">備註或想問的問題</label>
                 <textarea name="message" rows={4} placeholder="請簡單描述你的空間狀況或想了解的內容..." className="w-full px-4 py-3 bg-surface-container rounded-xl text-on-surface placeholder-on-surface-variant/40 focus:outline-none focus:ring-2 focus:ring-primary/30 text-sm resize-none" />
               </div>
-              <button type="submit" className="w-full butler-gradient text-white py-4 rounded-xl font-bold text-base cloud-shadow hover:scale-[1.01] active:scale-[0.99] transition-transform flex items-center justify-center gap-2">
-                <span className="material-symbols-outlined text-[20px]">send</span>送出合作申請
+              <button
+                type="submit"
+                disabled={submitStatus === "loading"}
+                className="w-full butler-gradient text-white py-4 rounded-xl font-bold text-base cloud-shadow hover:scale-[1.01] active:scale-[0.99] transition-transform flex items-center justify-center gap-2 disabled:opacity-60 disabled:scale-100 disabled:cursor-not-allowed"
+              >
+                {submitStatus === "loading" ? (
+                  <>
+                    <span className="material-symbols-outlined text-[20px] animate-spin">progress_activity</span>送出中…
+                  </>
+                ) : (
+                  <>
+                    <span className="material-symbols-outlined text-[20px]">send</span>送出合作申請
+                  </>
+                )}
               </button>
               <p className="text-xs text-on-surface-variant text-center font-label">
                 或直接聯繫我們：

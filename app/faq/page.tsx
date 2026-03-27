@@ -1,4 +1,5 @@
 import Link from "next/link";
+import FAQSidebar from "@/app/components/FAQSidebar";
 
 export const metadata = {
   title: "常見問題 | Spark Space 星域智空間",
@@ -18,28 +19,14 @@ export default function FAQ() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 be-2">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-12">
           {/* Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-28 space-y-1">
-              <div className="font-label text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-4">問題分類</div>
-              <a href="#rental" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-label font-medium text-primary bg-primary/8 hover:bg-primary/12 transition-colors">
-                <span className="material-symbols-outlined text-[16px]">home_storage</span>租倉與流程
-              </a>
-              <a href="#trust" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-label font-medium text-on-surface-variant hover:text-primary hover:bg-primary/6 transition-colors">
-                <span className="material-symbols-outlined text-[16px]">verified_user</span>信任與保障
-              </a>
-              <a href="#access" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-label font-medium text-on-surface-variant hover:text-primary hover:bg-primary/6 transition-colors">
-                <span className="material-symbols-outlined text-[16px]">lock_open</span>進出與使用
-              </a>
-              <a href="#billing" className="flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-label font-medium text-on-surface-variant hover:text-primary hover:bg-primary/6 transition-colors">
-                <span className="material-symbols-outlined text-[16px]">receipt_long</span>費用與合約
-              </a>
-            </div>
+          <div className="lg:col-span-1 hidden lg:block lg:sticky lg:top-28 lg:self-start">
+            <FAQSidebar />
           </div>
 
           {/* FAQ Items */}
           <div className="lg:col-span-3 space-y-10">
             {/* 租倉與流程 */}
-            <div id="rental">
+            <div id="rental" className="scroll-mt-28">
               <h2 className="font-headline text-xl font-black text-on-surface mb-4 flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary text-[22px]">home_storage</span>租倉與流程
               </h2>
@@ -62,7 +49,7 @@ export default function FAQ() {
             </div>
 
             {/* 信任與保障 */}
-            <div id="trust">
+            <div id="trust" className="scroll-mt-28">
               <h2 className="font-headline text-xl font-black text-on-surface mb-4 flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary text-[22px]">verified_user</span>信任與保障
               </h2>
@@ -84,7 +71,7 @@ export default function FAQ() {
             </div>
 
             {/* 進出與使用 */}
-            <div id="access">
+            <div id="access" className="scroll-mt-28">
               <h2 className="font-headline text-xl font-black text-on-surface mb-4 flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary text-[22px]">lock_open</span>進出與使用
               </h2>
@@ -95,9 +82,9 @@ export default function FAQ() {
                   { q: "搬家公司可以直接把東西送到倉庫嗎？", a: "可以。你只需要提前透過 APP 產生臨時密碼給搬家公司人員，他們就能獨立完成搬運。B1 入口備有推車供搬運使用。如果是第一次使用，建議提前加 LINE 告知，我們可以協助規劃搬運動線。" },
                 ].map((item) => (
                   <details key={item.q} className="group" {...(item.open ? { open: true } : {})}>
-                    <summary className={`flex items-center justify-between px-7 py-5 font-bold transition-colors cursor-pointer ${item.open ? "text-primary" : "text-on-surface hover:text-primary"}`}>
+                    <summary className="flex items-center justify-between px-7 py-5 font-bold text-on-surface hover:text-primary transition-colors cursor-pointer">
                       {item.q}
-                      <span className={`material-symbols-outlined faq-icon text-primary text-[22px] flex-shrink-0`} aria-hidden="true" style={item.open ? { transform: "rotate(45deg)" } : undefined}>add</span>
+                      <span className="material-symbols-outlined faq-icon text-primary text-[22px] flex-shrink-0" aria-hidden="true">add</span>
                     </summary>
                     <div className="px-7 pb-6 text-on-surface-variant leading-relaxed text-sm">{item.a}</div>
                   </details>
@@ -106,7 +93,7 @@ export default function FAQ() {
             </div>
 
             {/* 費用與合約 */}
-            <div id="billing">
+            <div id="billing" className="scroll-mt-28">
               <h2 className="font-headline text-xl font-black text-on-surface mb-4 flex items-center gap-2">
                 <span className="material-symbols-outlined text-primary text-[22px]">receipt_long</span>費用與合約
               </h2>
