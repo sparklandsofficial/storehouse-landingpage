@@ -1,30 +1,8 @@
 "use client";
 
 import Link from "next/link";
-import { useState, useRef, ChangeEvent, FormEvent } from "react";
+import { useState, useRef, FormEvent } from "react";
 import { motion, AnimatePresence } from "motion/react";
-
-interface OptImage { id: string; url: string; size: number; optimizedSize: number; }
-
-function optimizeImage(file: File): Promise<{ url: string; size: number }> {
-  return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onload = (e) => {
-      const img = new Image();
-      img.onload = () => {
-        const canvas = document.createElement("canvas");
-        let w = img.width, h = img.height;
-        if (w > 1200) { h = (1200 / w) * h; w = 1200; }
-        canvas.width = w; canvas.height = h;
-        canvas.getContext("2d")?.drawImage(img, 0, 0, w, h);
-        const url = canvas.toDataURL("image/jpeg", 0.8);
-        resolve({ url, size: Math.floor((url.length - "data:image/jpeg;base64,".length) * 0.75) });
-      };
-      img.src = e.target?.result as string;
-    };
-    reader.readAsDataURL(file);
-  });
-}
 
 // ── 前端輕量驗證 ──────────────────────────────────────────────────────────────
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -57,28 +35,11 @@ function validateForm(form: HTMLFormElement): FormErrors {
 type SubmitStatus = "idle" | "loading" | "success" | "error";
 
 export default function Partners() {
-  const [images, setImages] = useState<OptImage[]>([]);
-  const [optimizing, setOptimizing] = useState(false);
-  const fileRef = useRef<HTMLInputElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
   const [fieldErrors, setFieldErrors] = useState<FormErrors>({});
   const [submitStatus, setSubmitStatus] = useState<SubmitStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
-
-  const handleFiles = async (e: ChangeEvent<HTMLInputElement>) => {
-    const files = e.target.files;
-    if (!files) return;
-    setOptimizing(true);
-    const next: OptImage[] = [];
-    for (let i = 0; i < files.length; i++) {
-      const { url, size: optimizedSize } = await optimizeImage(files[i]);
-      next.push({ id: Math.random().toString(36).slice(2), url, size: files[i].size, optimizedSize });
-    }
-    setImages((p) => [...p, ...next]);
-    setOptimizing(false);
-    if (fileRef.current) fileRef.current.value = "";
-  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
