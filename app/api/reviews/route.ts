@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import reviewsFallback from "@/data/reviews.json";
 
 const PLACE_NAME = "星域智空間24小時全智能個人倉庫（延吉店）";
 const BG_COLORS = [
@@ -8,6 +9,7 @@ const BG_COLORS = [
   "bg-secondary-container",
   "bg-tertiary-fixed",
 ];
+const TARGET_COUNT = 5;
 
 interface PlacesReview {
   author_name: string;
@@ -65,7 +67,7 @@ export async function GET() {
     // 只保留 5 星且有文字內容，維持 newest 優先的順序
     const fiveStar = merged.filter((r) => r.rating === 5 && r.text.trim().length > 0);
 
-    const reviews = fiveStar.slice(0, 5).map((r, i) => ({
+    const liveReviews = fiveStar.slice(0, TARGET_COUNT).map((r, i) => ({
       id: i + 1,
       name: r.author_name,
       role: "Google 評論",
@@ -76,6 +78,17 @@ export async function GET() {
       time: r.relative_time_description,
       profilePhoto: r.profile_photo_url ?? "",
     }));
+
+    // 實時評論不足 TARGET_COUNT 時，用 fallback 補齊
+    const reviews = [...liveReviews];
+    if (reviews.length < TARGET_COUNT) {
+      const liveNames = new Set(reviews.map((r) => r.name));
+      const extras = reviewsFallback.reviews.filter((r) => !liveNames.has(r.name));
+      for (const extra of extras) {
+        if (reviews.length >= TARGET_COUNT) break;
+        reviews.push({ ...extra, id: reviews.length + 1, bgColor: BG_COLORS[reviews.length] });
+      }
+    }
 
     return NextResponse.json({
       lastUpdated: new Date().toISOString().split("T")[0],
