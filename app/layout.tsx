@@ -16,6 +16,10 @@ export default function RootLayout({
   return (
     <html lang="zh-TW">
       <head>
+        <meta
+          name="google-site-verification"
+          content="oCAeCcEN5KPe0bg6h8-pM9aFs94ipWH0KcbbAIKTkrs"
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
