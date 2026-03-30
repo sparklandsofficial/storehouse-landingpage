@@ -1,4 +1,4 @@
-"use client";
+ "use client";
 
 import { Suspense, useState, FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
@@ -34,7 +34,6 @@ function ResetPasswordInner() {
     try {
       setLoading(true);
 
-      // 前端只呼叫自己專用的 server 端 API，由該 API 用 BACKEND_URL 打 backend
       const res = await fetch("/api/frontend/reset-password-by-link", {
         method: "POST",
         headers: {
@@ -157,5 +156,4 @@ export default function ResetPasswordPage() {
     </Suspense>
   );
 }
-
 

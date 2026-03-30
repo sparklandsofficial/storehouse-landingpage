@@ -1,0 +1,61 @@
+{
+  "lastUpdated": "2026-03-26",
+  "source": "Google Maps – 星域智空間24小時全智能個人倉庫（延吉店）",
+  "reviews": [
+    {
+      "id": 1,
+      "name": "林小姐",
+      "role": "Google 評論",
+      "quote": "裝潢那兩個月，三房的家具全塞進一個 XL 號倉位，比我想像的好放很多。APP 真的很方便，不用聯絡任何人。",
+      "avatar": "林",
+      "bgColor": "bg-secondary-container",
+      "rating": 5,
+      "time": "1個月前",
+      "profilePhoto": ""
+    },
+    {
+      "id": 2,
+      "name": "王先生",
+      "role": "Google 評論",
+      "quote": "電商庫存從家裡搬出來，一個 M 號倉位就解決了。24 小時可以進出，晚上補貨也沒問題，省了很多麻煩。",
+      "avatar": "王",
+      "bgColor": "bg-tertiary-fixed",
+      "rating": 5,
+      "time": "2個月前",
+      "profilePhoto": ""
+    },
+    {
+      "id": 3,
+      "name": "陳小姐",
+      "role": "Google 評論",
+      "quote": "租倉流程全在 APP 上完成，連合約都是線上簽的。最喜歡手機開門這個功能，真的不需要帶任何東西。",
+      "avatar": "陳",
+      "bgColor": "bg-primary-fixed",
+      "rating": 5,
+      "time": "3個月前",
+      "profilePhoto": ""
+    },
+    {
+      "id": 4,
+      "name": "張先生",
+      "role": "Google 評論",
+      "quote": "每年換季最頭痛的就是棉被跟大外套，現在通通塞進 S 號倉，家裡衣櫃瞬間清空，心情都變好了！",
+      "avatar": "張",
+      "bgColor": "bg-secondary-container",
+      "rating": 5,
+      "time": "4個月前",
+      "profilePhoto": ""
+    },
+    {
+      "id": 5,
+      "name": "李小姐",
+      "role": "Google 評論",
+      "quote": "辦公室堆滿樣品真的很亂，租了一個 L 號倉位當作小倉庫，APP 隨時看監控很放心，對小公司來說很划算。",
+      "avatar": "李",
+      "bgColor": "bg-tertiary-fixed",
+      "rating": 5,
+      "time": "5個月前",
+      "profilePhoto": ""
+    }
+  ]
+}
