@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import LineIcon from "@/app/components/LineIcon";
 import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
@@ -168,7 +169,7 @@ export default async function Process({ params }: Props) {
             rel="noopener"
             className="bg-surface-container-lowest border border-outline-variant/20 text-on-surface px-8 py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-surface-container transition-colors"
           >
-            <span className="material-symbols-outlined text-[20px]">chat_bubble</span>
+            <LineIcon className="h-5 w-5" />
             {t("ctaLine")}
           </a>
         </div>

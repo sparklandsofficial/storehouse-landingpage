@@ -159,16 +159,16 @@ export default function Navigation() {
     return (
       <Link
         href={path}
-        className={`relative pb-[5px] text-[13px] tracking-[0.02em] transition-colors ${
+        className={`relative pb-[6px] text-[13px] tracking-[0.02em] transition-colors outline-none focus-visible:ring-2 focus-visible:ring-primary/50 focus-visible:rounded-sm ${
           active
             ? "font-semibold text-primary"
             : "font-medium text-on-surface/55 hover:text-on-surface/90"
         }`}
       >
         {label}
-        {/* active 指示圓點：absolute 定位，不撐高連結高度 */}
+        {/* active 底部橫條：absolute 定位不影響高度 */}
         <span
-          className={`absolute bottom-0 left-1/2 h-[3px] w-[3px] -translate-x-1/2 rounded-full bg-primary transition-opacity ${
+          className={`absolute bottom-0 left-0 h-[2px] w-full rounded-full bg-primary transition-opacity ${
             active ? "opacity-100" : "opacity-0"
           }`}
           aria-hidden
@@ -218,33 +218,27 @@ export default function Navigation() {
           />
         </Link>
 
-        {/* 桌面版：Nav links + 地球 + CTA */}
-        <div className="hidden md:flex items-center gap-8">
-          <nav className="flex items-center gap-7" aria-label="Main">
-            {linkDesktop("/pricing", t("pricing"))}
-            {linkDesktop("/process", t("process"))}
-            {linkDesktop("/locations", t("locations"))}
-            {linkDesktop("/faq", t("faq"))}
-          </nav>
+        {/* 桌面版 Nav — absolute 置中，不被左右元素擠壓 */}
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex" aria-label="Main">
+          {linkDesktop("/pricing", t("pricing"))}
+          {linkDesktop("/process", t("process"))}
+          {linkDesktop("/locations", t("locations"))}
+          {linkDesktop("/faq", t("faq"))}
+        </nav>
 
-          <div className="flex items-center gap-3">
-            <LocaleMenu t={t} pathname={pathname} current={locale} />
-            <Link
-              href="/pricing"
-              className="butler-gradient text-white px-5 py-2 rounded-xl text-[13px] font-bold tracking-wide cloud-shadow hover:scale-[1.02] active:scale-[0.98] transition-transform font-label whitespace-nowrap"
-            >
-              {t("ctaRent")}
-            </Link>
-          </div>
-        </div>
-
-        {/* 手機版：地球 + Hamburger */}
-        <div className="flex items-center gap-2 md:hidden">
+        {/* 右側：Globe + CTA（桌面） + Hamburger（手機） */}
+        <div className="flex items-center gap-2 md:gap-3">
           <LocaleMenu t={t} pathname={pathname} current={locale} />
+          <Link
+            href="/pricing"
+            className="butler-gradient hidden text-white px-5 py-2 rounded-xl text-[13px] font-bold tracking-wide cloud-shadow hover:scale-[1.02] active:scale-[0.98] transition-transform font-label whitespace-nowrap outline-none focus-visible:ring-2 focus-visible:ring-primary/50 md:inline-flex"
+          >
+            {t("ctaRent")}
+          </Link>
           <button
             ref={menuButtonRef}
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-outline-variant/20 bg-surface-container text-on-surface transition-colors hover:bg-surface-container-high"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-outline-variant/20 bg-surface-container text-on-surface transition-colors hover:bg-surface-container-high md:hidden"
             aria-expanded={mobileOpen}
             aria-controls={menuId}
             aria-label={mobileOpen ? t("closeMenu") : t("openMenu")}

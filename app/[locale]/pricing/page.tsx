@@ -1,4 +1,5 @@
 import { Link } from "@/i18n/navigation";
+import LineIcon from "@/app/components/LineIcon";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 
 type Props = { params: { locale: string } };
@@ -70,7 +71,7 @@ export default async function Pricing({ params }: Props) {
                 rel="noopener"
                 className="w-full py-3 rounded-xl text-sm font-bold text-center flex items-center justify-center gap-2 bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface"
               >
-                <span className="material-symbols-outlined text-[17px]">chat_bubble</span>
+                <LineIcon className="h-[17px] w-[17px]" />
                 {t("ctaS")}
               </a>
             </div>
@@ -111,7 +112,7 @@ export default async function Pricing({ params }: Props) {
                 rel="noopener"
                 className="w-full py-3 rounded-xl text-sm font-bold text-center flex items-center justify-center gap-2 butler-gradient text-white cloud-shadow hover:scale-[1.01] active:scale-[0.99] transition-transform"
               >
-                <span className="material-symbols-outlined text-[17px]">chat_bubble</span>
+                <LineIcon className="h-[17px] w-[17px]" />
                 {t("ctaM")}
               </a>
             </div>
@@ -148,7 +149,7 @@ export default async function Pricing({ params }: Props) {
                 rel="noopener"
                 className="w-full py-3 rounded-xl text-sm font-bold text-center flex items-center justify-center gap-2 bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface"
               >
-                <span className="material-symbols-outlined text-[17px]">chat_bubble</span>
+                <LineIcon className="h-[17px] w-[17px]" />
                 {t("ctaL")}
               </a>
             </div>
@@ -185,7 +186,7 @@ export default async function Pricing({ params }: Props) {
                 rel="noopener"
                 className="w-full py-3 rounded-xl text-sm font-bold text-center flex items-center justify-center gap-2 bg-surface-container hover:bg-surface-container-high transition-colors text-on-surface"
               >
-                <span className="material-symbols-outlined text-[17px]">chat_bubble</span>
+                <LineIcon className="h-[17px] w-[17px]" />
                 {t("ctaXL")}
               </a>
             </div>
@@ -193,7 +194,8 @@ export default async function Pricing({ params }: Props) {
         </div>
         <p className="text-xs text-on-surface-variant mt-6 font-label text-center">
           {t("footnote")}
-          <a href="https://lin.ee/zL7pC2r" target="_blank" rel="noopener" className="text-primary font-bold hover:underline">
+          <a href="https://lin.ee/zL7pC2r" target="_blank" rel="noopener" className="inline-flex items-center gap-1 text-primary font-bold hover:underline">
+            <LineIcon className="h-[14px] w-[14px]" />
             {t("footnoteLink")}
           </a>
           {t("footnoteClose")}
@@ -285,7 +287,7 @@ export default async function Pricing({ params }: Props) {
             rel="noopener"
             className="butler-gradient text-white px-8 py-4 rounded-xl font-bold text-base cloud-shadow flex items-center justify-center gap-2 hover:scale-[1.02] transition-transform"
           >
-            <span className="material-symbols-outlined text-[20px]">chat_bubble</span>
+            <LineIcon className="h-5 w-5" />
             {t("ctaLine")}
           </a>
           <Link

@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import Image from "next/image";
-import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import { Facebook, Instagram } from "lucide-react";
+import LineIcon from "./LineIcon";
 import { getTranslations, getLocale } from "next-intl/server";
 
 export default async function Footer() {
@@ -29,7 +30,7 @@ export default async function Footer() {
                 className="text-inverse-on-surface/50 hover:text-inverse-on-surface transition-colors"
                 aria-label="LINE"
               >
-                <MessageCircle className="w-6 h-6" />
+                <LineIcon className="w-6 h-6" />
               </a>
               <a
                 href="https://www.facebook.com/profile.php?id=61563342058017"

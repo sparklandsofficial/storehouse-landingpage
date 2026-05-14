@@ -1,3 +1,4 @@
+import LineIcon from "@/app/components/LineIcon";
 /** Terms of Service body (English) — informational translation */
 export default function TermsDocEn() {
   const prohibited = [
@@ -204,7 +205,7 @@ export default function TermsDocEn() {
           </div>
         </div>
         <div className="flex items-center gap-3 text-sm">
-          <span className="material-symbols-outlined text-primary text-[17px]">chat_bubble</span>
+          <LineIcon className="h-[17px] w-[17px] text-primary" />
           <div>
             <strong className="text-on-surface">LINE:</strong>{" "}
             <a href="https://lin.ee/zL7pC2r" target="_blank" rel="noopener noreferrer" className="text-primary font-bold">

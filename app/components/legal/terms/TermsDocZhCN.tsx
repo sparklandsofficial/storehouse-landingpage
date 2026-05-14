@@ -1,3 +1,4 @@
+import LineIcon from "@/app/components/LineIcon";
 /** 服务条款正文（简体中文） */
 export default function TermsDocZhCN() {
   const prohibited = [
@@ -208,7 +209,7 @@ export default function TermsDocZhCN() {
           </div>
         </div>
         <div className="flex items-center gap-3 text-sm">
-          <span className="material-symbols-outlined text-primary text-[17px]">chat_bubble</span>
+          <LineIcon className="h-[17px] w-[17px] text-primary" />
           <div>
             <strong className="text-on-surface">LINE 客服：</strong>
             <a href="https://lin.ee/zL7pC2r" target="_blank" rel="noopener noreferrer" className="text-primary font-bold">

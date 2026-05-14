@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/navigation";
+import LineIcon from "@/app/components/LineIcon";
 import { useTranslations } from "next-intl";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
@@ -120,11 +121,11 @@ export default function LocationsClient() {
   ];
 
   return (
-    <div className="pt-20">
-      <section className="relative flex h-[480px] items-end overflow-hidden be-1">
+    <div className="pt-[56px]">
+      <section className="relative flex h-[480px] items-end overflow-hidden">
         <YanjiCarousel carouselAlt={t("carouselAlt")} />
         <div className="hero-overlay pointer-events-none absolute inset-0 z-10" />
-        <div className="relative z-20 mx-auto w-full max-w-7xl px-6 pb-12 lg:px-12">
+        <div className="relative z-20 mx-auto w-full max-w-7xl px-6 pb-12 lg:px-12 be-1">
           <h1 className="font-headline text-5xl md:text-6xl font-black text-white leading-tight mb-2 tracking-tight">
             {t("heroH1")}
           </h1>
@@ -259,7 +260,7 @@ export default function LocationsClient() {
             rel="noopener"
             className="bg-surface-container-lowest border border-outline-variant/20 text-on-surface px-8 py-4 rounded-xl font-bold text-base flex items-center justify-center gap-2 hover:bg-surface-container transition-colors"
           >
-            <span className="material-symbols-outlined text-[20px]">chat_bubble</span>
+            <LineIcon className="h-5 w-5" />
             {t("bottomCtaLine")}
           </a>
         </div>

@@ -3,6 +3,7 @@ import Image from "next/image";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { Smartphone, Key, CreditCard, Eye } from "lucide-react";
 import TestimonialCarousel from "../components/TestimonialCarousel";
+import LineIcon from "../components/LineIcon";
 
 type Props = { params: { locale: string } };
 
@@ -82,7 +83,7 @@ export default async function Home({ params }: Props) {
               rel="noopener"
               className="bg-white/10 backdrop-blur-md border border-white/25 text-white px-8 py-4 rounded-xl text-base font-bold hover:bg-white/20 transition-all flex items-center justify-center gap-2"
             >
-              <span className="material-symbols-outlined text-[20px]">chat_bubble</span>
+              <LineIcon className="h-5 w-5" />
               {t("ctaLine")}
             </a>
           </div>
@@ -269,7 +270,7 @@ export default async function Home({ params }: Props) {
                 rel="noopener"
                 className="bg-white/15 border border-white/30 text-white px-8 py-4 rounded-xl font-bold text-base hover:bg-white/25 transition-colors flex items-center justify-center gap-2"
               >
-                <span className="material-symbols-outlined text-[20px]">chat_bubble</span>
+                <LineIcon className="h-5 w-5" />
                 {t("finalCtaLine")}
               </a>
             </div>
