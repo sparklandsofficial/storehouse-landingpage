@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /Users/alexkwong/Desktop/GitHub/real/storehouse/storehouse-landingpage/.claude)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(kill 19987)"
+    ]
+  }
+}
