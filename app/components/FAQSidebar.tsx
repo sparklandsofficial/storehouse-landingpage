@@ -1,21 +1,23 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
-const CATEGORIES = [
-  { id: "rental",  icon: "home_storage",   label: "租倉與流程" },
-  { id: "trust",   icon: "verified_user",  label: "信任與保障" },
-  { id: "access",  icon: "lock_open",      label: "進出與使用" },
-  { id: "billing", icon: "receipt_long",   label: "費用與合約" },
-];
+const CATEGORY_IDS = [
+  { id: "rental", icon: "home_storage" },
+  { id: "trust", icon: "verified_user" },
+  { id: "access", icon: "lock_open" },
+  { id: "billing", icon: "receipt_long" },
+] as const;
 
 export default function FAQSidebar() {
+  const t = useTranslations("FaqSidebar");
   const [active, setActive] = useState("rental");
 
   useEffect(() => {
     const observers: IntersectionObserver[] = [];
 
-    CATEGORIES.forEach(({ id }) => {
+    CATEGORY_IDS.forEach(({ id }) => {
       const el = document.getElementById(id);
       if (!el) return;
 
@@ -38,10 +40,9 @@ export default function FAQSidebar() {
 
   return (
     <div className="space-y-1">
-      <div className="font-label text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-4">
-        問題分類
-      </div>
-      {CATEGORIES.map(({ id, icon, label }) => {
+      <div className="font-label text-xs uppercase tracking-widest text-on-surface-variant font-bold mb-4">{t("tocTitle")}</div>
+      {CATEGORY_IDS.map(({ id, icon }) => {
+        const label = t(id as "rental" | "trust" | "access" | "billing");
         const isActive = active === id;
         return (
           <a

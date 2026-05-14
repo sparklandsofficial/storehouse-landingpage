@@ -159,17 +159,17 @@ export default function Navigation() {
     return (
       <Link
         href={path}
-        className={`relative flex flex-col items-center gap-[3px] text-[13px] tracking-[0.02em] transition-colors ${
+        className={`relative pb-[5px] text-[13px] tracking-[0.02em] transition-colors ${
           active
             ? "font-semibold text-primary"
             : "font-medium text-on-surface/55 hover:text-on-surface/90"
         }`}
       >
         {label}
-        {/* active 指示圓點 */}
+        {/* active 指示圓點：absolute 定位，不撐高連結高度 */}
         <span
-          className={`h-[3px] w-[3px] rounded-full transition-opacity ${
-            active ? "bg-primary opacity-100" : "opacity-0"
+          className={`absolute bottom-0 left-1/2 h-[3px] w-[3px] -translate-x-1/2 rounded-full bg-primary transition-opacity ${
+            active ? "opacity-100" : "opacity-0"
           }`}
           aria-hidden
         />

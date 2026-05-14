@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import Navigation from "./components/navigation";
-import Footer from "./components/footer";
 
 export const metadata: Metadata = {
   title: "星域智空間 | 您的收納小管家",
@@ -16,7 +14,10 @@ export default function RootLayout({
   return (
     <html lang="zh-TW">
       <head>
-      <meta name="google-site-verification" content="BM5bPMPXhfGbh-hmZZGZeDv-mEAPdZyZ9CDVrfjR0Wg" />
+        <meta
+          name="google-site-verification"
+          content="BM5bPMPXhfGbh-hmZZGZeDv-mEAPdZyZ9CDVrfjR0Wg"
+        />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
@@ -36,23 +37,15 @@ export default function RootLayout({
         />
       </head>
       <body>
-        {/* 新版：Google Tag Manager (noscript) 放在 <body> 開頭後 */}
-        {/* Google Tag Manager (noscript) */}
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-M54TX8XB"
             height="0"
             width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
+            style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        {/* End Google Tag Manager (noscript) */}
-
-        <Navigation />
-        <main className="relative w-full">
-          {children}
-        </main>
-        <Footer />
+        {children}
       </body>
     </html>
   );

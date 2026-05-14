@@ -1,0 +1,62 @@
+const zhTW = {
+  filterTitle: "快速篩選",
+  cityPh: "請選擇縣市",
+  districtPh: "請選擇行政區",
+  cityTaipei: "台北市",
+  distSongshan: "松山區",
+  go: "Go",
+  heroAlt1: "Hero Background 1",
+  heroAlt2: "Hero Background 2",
+  storeTitle: "台北延吉店",
+  slideAlt: "台北延吉店",
+  addrLabel: "地址：",
+  addrValue: "台北市松山區延吉街7-1號B1（屈臣氏後方）",
+  phoneLabel: "服務電話：",
+  phoneValue: "(02)8177-7085",
+  hoursLabel: "進出時間：",
+  hoursValue: "24小時",
+} as const;
+
+const zhCN = {
+  filterTitle: "快速筛选",
+  cityPh: "请选择县市",
+  districtPh: "请选择行政区",
+  cityTaipei: "台北市",
+  distSongshan: "松山区",
+  go: "Go",
+  heroAlt1: "首屏背景 1",
+  heroAlt2: "首屏背景 2",
+  storeTitle: "台北延吉店",
+  slideAlt: "台北延吉店",
+  addrLabel: "地址：",
+  addrValue: "台北市松山区延吉街7-1号B1（屈臣氏后方）",
+  phoneLabel: "服务电话：",
+  phoneValue: "(02)8177-7085",
+  hoursLabel: "进出时间：",
+  hoursValue: "24小时",
+} as const;
+
+const en = {
+  filterTitle: "Quick filters",
+  cityPh: "City",
+  districtPh: "District",
+  cityTaipei: "Taipei City",
+  distSongshan: "Songshan District",
+  go: "Go",
+  heroAlt1: "Hero image 1",
+  heroAlt2: "Hero image 2",
+  storeTitle: "Yanji, Taipei",
+  slideAlt: "Yanji, Taipei store",
+  addrLabel: "Address:",
+  addrValue: "B1, No. 7-1, Yanji St., Songshan Dist., Taipei (behind Watsons)",
+  phoneLabel: "Phone:",
+  phoneValue: "(02) 8177-7085",
+  hoursLabel: "Access hours:",
+  hoursValue: "24/7",
+} as const;
+
+export const homeBranch = {
+  "zh-TW": zhTW,
+  "zh-CN": zhCN,
+  en,
+} as const;

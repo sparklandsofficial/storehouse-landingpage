@@ -1,8 +1,11 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
 import Image from "next/image";
 import { Facebook, Instagram, MessageCircle } from "lucide-react";
+import { getTranslations, getLocale } from "next-intl/server";
 
-export default function Footer() {
+export default async function Footer() {
+  const [t, locale] = await Promise.all([getTranslations("footer"), getLocale()]);
+
   return (
     <footer className="bg-inverse-surface text-inverse-on-surface pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
@@ -10,16 +13,14 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="mb-6">
               <Image
-                src="/images/logo.png"
-                alt="Spark Space 星域智空間"
-                width={120}
-                height={96}
+                src={locale === "en" ? "/images/logo-en.png" : "/images/logo.png"}
+                alt={t("logoAlt")}
+                width={locale === "en" ? 160 : 120}
+                height={40}
                 className="h-10 w-auto object-contain brightness-0 invert opacity-80 hover:opacity-100 transition-opacity"
               />
             </div>
-            <p className="text-inverse-on-surface/60 text-sm leading-relaxed mb-5">
-              台北松山區智能倉儲，全程手機操作，24 小時進出。
-            </p>
+            <p className="text-inverse-on-surface/60 text-sm leading-relaxed mb-5">{t("tagline")}</p>
             <div className="flex items-center gap-4">
               <a
                 href="https://lin.ee/zL7pC2r"
@@ -52,41 +53,42 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-label text-xs uppercase font-bold tracking-widest text-inverse-on-surface/50 mb-5">
-              租倉服務
-            </h4>
+            <h4 className="font-label text-xs uppercase font-bold tracking-widest text-inverse-on-surface/50 mb-5">{t("sectionService")}</h4>
             <ul className="space-y-3">
               <li>
                 <Link href="/pricing" className="text-inverse-on-surface/70 hover:text-inverse-on-surface text-sm transition-colors">
-                  倉位規格與方案
+                  {t("pricingSpecs")}
                 </Link>
               </li>
               <li>
                 <Link href="/process" className="text-inverse-on-surface/70 hover:text-inverse-on-surface text-sm transition-colors">
-                  租倉流程 &amp; APP
+                  {t("processApp")}
                 </Link>
               </li>
               <li>
                 <Link href="/locations" className="text-inverse-on-surface/70 hover:text-inverse-on-surface text-sm transition-colors">
-                  台北延吉店
+                  {t("locationYanji")}
                 </Link>
               </li>
             </ul>
           </div>
 
           <div>
-            <h4 className="font-label text-xs uppercase font-bold tracking-widest text-inverse-on-surface/50 mb-5">
-              支援
-            </h4>
+            <h4 className="font-label text-xs uppercase font-bold tracking-widest text-inverse-on-surface/50 mb-5">{t("sectionSupport")}</h4>
             <ul className="space-y-3">
               <li>
                 <Link href="/faq" className="text-inverse-on-surface/70 hover:text-inverse-on-surface text-sm transition-colors">
-                  常見問題
+                  {t("faq")}
                 </Link>
               </li>
               <li>
-                <a href="https://lin.ee/zL7pC2r" target="_blank" rel="noopener" className="text-inverse-on-surface/70 hover:text-inverse-on-surface text-sm transition-colors">
-                  LINE 客服
+                <a
+                  href="https://lin.ee/zL7pC2r"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-inverse-on-surface/70 hover:text-inverse-on-surface text-sm transition-colors"
+                >
+                  {t("lineSupport")}
                 </a>
               </li>
               <li>
@@ -98,9 +100,7 @@ export default function Footer() {
           </div>
 
           <div>
-            <h4 className="font-label text-xs uppercase font-bold tracking-widest text-inverse-on-surface/50 mb-5">
-              下載 APP
-            </h4>
+            <h4 className="font-label text-xs uppercase font-bold tracking-widest text-inverse-on-surface/50 mb-5">{t("sectionApp")}</h4>
             <div className="space-y-3 mb-6">
               <a
                 href="https://www.sparkspace.com.tw/iosdownload"
@@ -136,22 +136,20 @@ export default function Footer() {
             </div>
             <div className="space-y-2">
               <Link href="/partners" className="block text-inverse-on-surface/40 hover:text-inverse-on-surface/70 text-xs transition-colors">
-                加盟合作
+                {t("partners")}
               </Link>
               <Link href="/privacy" className="block text-inverse-on-surface/40 hover:text-inverse-on-surface/70 text-xs transition-colors">
-                隱私權條款
+                {t("privacy")}
               </Link>
               <Link href="/terms" className="block text-inverse-on-surface/40 hover:text-inverse-on-surface/70 text-xs transition-colors">
-                服務條款
+                {t("terms")}
               </Link>
             </div>
           </div>
         </div>
 
         <div className="border-t border-inverse-on-surface/10 pt-8">
-          <p className="text-inverse-on-surface/30 text-[11px] font-label uppercase tracking-widest text-center">
-            © 2026 Spark Space 星域智空間. All rights reserved. · 105臺北市松山區延吉街7-1號 B1
-          </p>
+          <p className="text-inverse-on-surface/30 text-[11px] font-label uppercase tracking-widest text-center">{t("copyright")}</p>
         </div>
       </div>
     </footer>

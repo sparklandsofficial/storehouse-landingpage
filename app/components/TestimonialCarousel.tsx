@@ -16,10 +16,18 @@ interface Testimonial {
   profilePhoto?: string;
 }
 
-const FALLBACK = reviewsData.reviews as Testimonial[];
+const FALLBACK = (reviewsData.reviews ?? []) as Testimonial[];
+
+function isValidReview(x: unknown): x is Testimonial {
+  if (!x || typeof x !== "object") return false;
+  const o = x as Record<string, unknown>;
+  return typeof o.quote === "string" && typeof o.name === "string";
+}
 
 export default function TestimonialCarousel() {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>(FALLBACK);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(
+    FALLBACK.length > 0 ? FALLBACK : []
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [loading, setLoading] = useState(true);
@@ -28,20 +36,35 @@ export default function TestimonialCarousel() {
     fetch("/api/reviews")
       .then((r) => r.json())
       .then((data) => {
-        if (data.reviews?.length > 0) setTestimonials(data.reviews);
+        const raw = data?.reviews;
+        if (!Array.isArray(raw) || raw.length === 0) return;
+        const valid = raw.filter(isValidReview);
+        if (valid.length > 0) setTestimonials(valid);
       })
       .catch(() => {/* 保留 fallback */})
       .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    setCurrentIndex((i) => (testimonials.length === 0 ? 0 : Math.min(i, testimonials.length - 1)));
+  }, [testimonials.length]);
+
   const nextSlide = () => {
     setDirection(1);
-    setCurrentIndex((prev) => (prev + 1) % testimonials.length);
+    setCurrentIndex((prev) => {
+      const n = testimonials.length;
+      if (n <= 0) return 0;
+      return (prev + 1) % n;
+    });
   };
 
   const prevSlide = () => {
     setDirection(-1);
-    setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+    setCurrentIndex((prev) => {
+      const n = testimonials.length;
+      if (n <= 0) return 0;
+      return (prev - 1 + n) % n;
+    });
   };
 
   useEffect(() => {
@@ -52,7 +75,7 @@ export default function TestimonialCarousel() {
     }, 5000);
 
     return () => clearTimeout(timer);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex, testimonials.length]);
 
   const variants = {
@@ -62,6 +85,13 @@ export default function TestimonialCarousel() {
   };
 
   const current = testimonials[currentIndex] ?? testimonials[0];
+  if (!current) {
+    return (
+      <div className="relative max-w-4xl mx-auto px-4 py-12 text-center text-on-surface-variant text-sm">
+        暫時無法顯示評論。
+      </div>
+    );
+  }
 
   return (
     <div className="relative max-w-4xl mx-auto px-4 overflow-hidden py-12">
