@@ -67,11 +67,11 @@ export default async function Process({ params }: Props) {
               <p className="text-on-surface-variant text-sm leading-relaxed">{descs[i]}</p>
               {i === 0 ? (
                 <div className="flex gap-3 mt-4 items-center flex-wrap justify-center">
-                  <a href="https://www.sparkspace.com.tw/iosdownload" target="_blank" rel="noopener" className="flex items-center gap-1 text-xs font-label font-bold text-primary hover:underline">
+                  <a href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL} target="_blank" rel="noopener" className="flex items-center gap-1 text-xs font-label font-bold text-primary hover:underline">
                     <Image src="/images/ios-download.webp" alt={t("iosAlt")} width={135} height={40} className="h-[28px] w-auto" />
                   </a>
                   <a
-                    href="https://play.google.com/store/apps/details?id=terizac.intheblackworld.storehouseapp&pcampaignid=web_share"
+                    href={process.env.NEXT_PUBLIC_ANDROID_DOWNLOAD_URL}
                     target="_blank"
                     rel="noopener"
                     className="flex items-center gap-1 text-xs font-label font-bold text-primary hover:underline"
@@ -125,11 +125,11 @@ export default async function Process({ params }: Props) {
                 ))}
               </div>
               <div className="mt-10 flex flex-wrap gap-4 items-center">
-                <a href="https://www.sparkspace.com.tw/iosdownload" target="_blank" rel="noopener" className="hover:opacity-80 transition-opacity">
+                <a href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL} target="_blank" rel="noopener" className="hover:opacity-80 transition-opacity">
                   <Image src="/images/ios-download.webp" alt={t("iosAlt")} width={135} height={40} className="h-[40px] w-auto" />
                 </a>
                 <a
-                  href="https://play.google.com/store/apps/details?id=terizac.intheblackworld.storehouseapp&pcampaignid=web_share"
+                  href={process.env.NEXT_PUBLIC_ANDROID_DOWNLOAD_URL}
                   target="_blank"
                   rel="noopener"
                   className="hover:opacity-80 transition-opacity"

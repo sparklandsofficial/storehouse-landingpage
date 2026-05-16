@@ -104,7 +104,7 @@ export default async function Footer() {
             <h4 className="font-label text-xs uppercase font-bold tracking-widest text-inverse-on-surface/50 mb-5">{t("sectionApp")}</h4>
             <div className="space-y-3 mb-6">
               <a
-                href="https://www.sparkspace.com.tw/iosdownload"
+                href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener"
                 className="inline-flex hover:opacity-80 transition-opacity"
@@ -120,7 +120,7 @@ export default async function Footer() {
               </a>
               <br />
               <a
-                href="https://play.google.com/store/apps/details?id=terizac.intheblackworld.storehouseapp&pcampaignid=web_share"
+                href={process.env.NEXT_PUBLIC_ANDROID_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener"
                 className="inline-flex hover:opacity-80 transition-opacity"

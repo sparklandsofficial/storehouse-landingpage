@@ -153,11 +153,11 @@ export default async function Home({ params }: Props) {
                   <span className="material-symbols-outlined text-[18px]">play_circle</span>
                   {t("techCtaProcess")}
                 </Link>
-                <a href="https://www.sparkspace.com.tw/iosdownload" target="_blank" rel="noopener" className="hover:opacity-80 transition-opacity">
+                <a href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL} target="_blank" rel="noopener" className="hover:opacity-80 transition-opacity">
                   <Image src="/images/ios-download.webp" alt={t("iosAlt")} width={135} height={40} className="h-[40px] w-auto" />
                 </a>
                 <a
-                  href="https://play.google.com/store/apps/details?id=terizac.intheblackworld.storehouseapp&pcampaignid=web_share"
+                  href={process.env.NEXT_PUBLIC_ANDROID_DOWNLOAD_URL}
                   target="_blank"
                   rel="noopener"
                   className="hover:opacity-80 transition-opacity"
@@ -275,11 +275,11 @@ export default async function Home({ params }: Props) {
               </a>
             </div>
             <div className="mt-8 flex justify-center gap-4 items-center flex-wrap">
-              <a href="https://www.sparkspace.com.tw/iosdownload" target="_blank" rel="noopener" className="hover:opacity-80 transition-opacity">
+              <a href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL} target="_blank" rel="noopener" className="hover:opacity-80 transition-opacity">
                 <Image src="/images/ios-download.webp" alt={t("iosAlt")} width={135} height={40} className="h-[40px] w-auto" />
               </a>
               <a
-                href="https://play.google.com/store/apps/details?id=terizac.intheblackworld.storehouseapp&pcampaignid=web_share"
+                href={process.env.NEXT_PUBLIC_ANDROID_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener"
                 className="hover:opacity-80 transition-opacity"

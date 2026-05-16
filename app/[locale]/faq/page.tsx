@@ -162,7 +162,7 @@ export default async function FAQ({ params }: Props) {
                 </Link>
               ))}
               <a
-                href="https://www.sparkspace.com.tw/iosdownload"
+                href={process.env.NEXT_PUBLIC_IOS_DOWNLOAD_URL}
                 target="_blank"
                 rel="noopener"
                 className="flex items-center justify-between p-4 bg-surface-container-low rounded-xl hover:bg-surface-container transition-colors group"
