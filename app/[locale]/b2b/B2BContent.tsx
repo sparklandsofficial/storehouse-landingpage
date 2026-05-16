@@ -13,7 +13,7 @@
  *   - #b2b-scroll-progress (scroll progress bar)
  */
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import "./b2b.css";
 import reviewsFallback from "@/data/reviews.json";
 
@@ -192,7 +192,7 @@ export default function B2BContent({ locale }: Props) {
                 three years of integration underneath. At our Yanji flagship in
                 Taipei, this system has become routine. We are now opening three
                 structured ways to participate: brand franchise, system license,
-                co-investment — for partners with a considered view on Asia's
+                co-investment — for partners with a considered view on Asia&apos;s
                 urban future.
               </p>
             )}
@@ -531,7 +531,7 @@ export default function B2BContent({ locale }: Props) {
               <p className="section-sub-en animate delay-2">
                 Traditional operators outsource six modules to six vendors. We
                 built all six as one system. Stability, iteration speed,
-                customization — fully owned, which is why "unmanned" actually
+                customization — fully owned, which is why &quot;unmanned&quot; actually
                 works.
               </p>
             )}
@@ -1449,8 +1449,8 @@ export default function B2BContent({ locale }: Props) {
             ) : (
               <p className="section-sub-en animate delay-2">
                 A real moat is not a slogan. It is four capabilities stacked
-                together — strip any one and you fall back to "old storage with
-                an app on top." We unfold them here, from foundation to surface.
+                together — strip any one and you fall back to &quot;old storage with
+                an app on top.&quot; We unfold them here, from foundation to surface.
               </p>
             )}
 
