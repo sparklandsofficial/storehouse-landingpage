@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light" />
+    <meta
+      name="description"
+      content="GameScope 官方支援中心：使用說明、App 內購買說明與聯絡方式。"
+    />
+    <link rel="canonical" href="https://www.sparkspace.com.tw/app/gamescope/support" />
+    <title>GameScope 支援中心</title>
+    <style>
+      /* 獨立頁面樣式：不載入主站程式或追蹤服務，讓 App Store 審查可直接開啟。 */
+      :root {
+        --ink: #101820;
+        --muted: #63717c;
+        --accent: #00667f;
+        --accent-soft: #e5f5f8;
+        --surface: #ffffff;
+        --canvas: #f4f7f8;
+        --border: #dce5e8;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        color: var(--ink);
+        background: var(--canvas);
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", sans-serif;
+        line-height: 1.7;
+      }
+
+      a { color: var(--accent); }
+      .shell { width: min(920px, calc(100% - 32px)); margin: 0 auto; }
+      .hero { padding: 72px 0 40px; }
+      .eyebrow {
+        margin: 0 0 10px;
+        color: var(--accent);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: .13em;
+        text-transform: uppercase;
+      }
+      h1 { margin: 0; font-size: clamp(38px, 8vw, 64px); line-height: 1.08; letter-spacing: -.04em; }
+      .lead { max-width: 700px; margin: 18px 0 0; color: var(--muted); font-size: 18px; }
+      .sport-list { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+      .sport-list span {
+        padding: 6px 12px;
+        border: 1px solid #b9dce3;
+        border-radius: 999px;
+        background: var(--accent-soft);
+        color: var(--accent);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      main { padding-bottom: 72px; }
+      .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+      .card {
+        padding: 26px;
+        border: 1px solid var(--border);
+        border-radius: 22px;
+        background: var(--surface);
+        box-shadow: 0 18px 50px rgba(16, 24, 32, .06);
+      }
+      .card.wide { grid-column: 1 / -1; }
+      h2 { margin: 0 0 12px; font-size: 21px; letter-spacing: -.02em; }
+      h3 { margin: 20px 0 5px; font-size: 16px; }
+      p { margin: 0 0 12px; }
+      p:last-child { margin-bottom: 0; }
+      ul, ol { margin: 8px 0 0; padding-left: 22px; }
+      li + li { margin-top: 7px; }
+      .note {
+        padding: 14px 16px;
+        border-radius: 14px;
+        background: var(--accent-soft);
+        color: #174e5a;
+      }
+      .contact {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 8px;
+        padding: 11px 17px;
+        border-radius: 12px;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 800;
+        text-decoration: none;
+      }
+      footer { padding: 28px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; }
+      .footer-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+      @media (max-width: 680px) {
+        .hero { padding-top: 48px; }
+        .grid { grid-template-columns: 1fr; }
+        .card.wide { grid-column: auto; }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 頁首：清楚標示 App 與支援範圍。 -->
+    <header class="hero">
+      <div class="shell">
+        <p class="eyebrow">GameScope Support</p>
+        <h1>GameScope 支援中心</h1>
+        <p class="lead">
+          GameScope 是一款簡潔、無廣告的運動計分工具。這裡提供基本操作、App 內購買說明與問題回報方式。
+        </p>
+        <div class="sport-list" aria-label="支援的運動">
+          <span>籃球</span><span>排球</span><span>羽球</span><span>網球</span><span>桌球</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- 主要支援內容：只包含已在 App 中提供的功能。 -->
+    <main class="shell">
+      <div class="grid">
+        <section class="card">
+          <h2>開始使用</h2>
+          <ol>
+            <li>在首頁選擇運動。</li>
+            <li>設定隊伍名稱、顏色與比賽格式。</li>
+            <li>按下「開始比賽」，點擊計分按鈕記錄比分。</li>
+            <li>使用畫面中央的選單復原、重新開始或交換隊伍顏色。</li>
+          </ol>
+        </section>
+
+        <section class="card">
+          <h2>語言顯示</h2>
+          <p>App 會依照裝置語言自動顯示繁體中文、簡體中文或英文。</p>
+          <p>如果裝置使用其他語言，App 會預設顯示英文。</p>
+        </section>
+
+        <section class="card wide">
+          <h2>自願贊助與付款</h2>
+          <p>
+            首頁右上角的咖啡圖示可開啟自願贊助頁。小杯、中杯與大杯咖啡均為消耗性 App 內購買項目，
+            用於支持 GameScope 持續開發，不會解鎖額外功能或數位內容。
+          </p>
+          <div class="note">
+            付款、退款與 Apple 帳號驗證均由 Apple 處理。若交易顯示待處理，請稍後再確認；若付款失敗，請確認網路與 Apple 帳號狀態後重試。
+          </div>
+        </section>
+
+        <section class="card">
+          <h2>常見問題</h2>
+          <h3>比分輸入錯誤怎麼辦？</h3>
+          <p>打開畫面中央選單並選擇「復原」，或使用計分板上的扣分按鈕修正。</p>
+          <h3>需要註冊帳號嗎？</h3>
+          <p>不需要。使用計分功能不必登入或建立帳號。</p>
+          <h3>贊助後沒有新增功能？</h3>
+          <p>這是正常情況。贊助屬於自願支持，不會改變 App 功能。</p>
+        </section>
+
+        <section class="card">
+          <h2>聯絡我們</h2>
+          <p>若遇到無法解決的問題，請在信件中附上裝置型號、iOS 版本、問題步驟及畫面截圖。</p>
+          <a class="contact" href="mailto:spark@sparklands.co?subject=GameScope%20%E6%94%AF%E6%8F%B4">
+            spark@sparklands.co
+          </a>
+        </section>
+      </div>
+    </main>
+
+    <!-- 頁尾：提供隱私權政策與法定開發者名稱。 -->
+    <footer>
+      <div class="shell footer-row">
+        <span>© 2026 Sparklands Tech CO., LTD.</span>
+        <a href="/app/gamescope/privacy">GameScope 隱私權政策</a>
+      </div>
+    </footer>
+  </body>
+</html>
