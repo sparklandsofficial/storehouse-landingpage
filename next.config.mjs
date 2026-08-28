@@ -14,6 +14,18 @@ const nextConfig = {
         source: "/app/gamescope/privacy",
         destination: "/app/gamescope/privacy.html",
       },
+      {
+        source: "/app/momentra/support",
+        destination: "/app/momentra/support.html",
+      },
+      {
+        source: "/app/momentra/privacy",
+        destination: "/app/momentra/privacy.html",
+      },
+      {
+        source: "/app/momentra/terms",
+        destination: "/app/momentra/terms.html",
+      },
     ];
   },
 };
