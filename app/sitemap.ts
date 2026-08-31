@@ -17,7 +17,6 @@ const PAGES = [
   "",           // 首頁
   "/about",
   "/branches",
-  "/locations",
   "/pricing",
   "/faq",
   "/process",

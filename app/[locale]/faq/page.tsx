@@ -142,7 +142,6 @@ export default async function FAQ({ params }: Props) {
               {[
                 { href: "/pricing", icon: "grid_view", title: t("quick1t"), sub: t("quick1s") },
                 { href: "/process", icon: "play_circle", title: t("quick2t"), sub: t("quick2s") },
-                { href: "/locations", icon: "location_on", title: t("quick3t"), sub: t("quick3s") },
               ].map((l) => (
                 <Link
                   key={l.href}

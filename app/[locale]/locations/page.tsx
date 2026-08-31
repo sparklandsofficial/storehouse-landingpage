@@ -1,15 +1,8 @@
-import { getTranslations, setRequestLocale } from "next-intl/server";
-import LocationsClient from "./LocationsClient";
+import { redirect } from "@/i18n/navigation";
 
 type Props = { params: { locale: string } };
 
-export async function generateMetadata({ params }: Props) {
-  setRequestLocale(params.locale);
-  const t = await getTranslations("LocationsPage");
-  return { title: t("metaTitle") };
-}
-
-export default async function LocationsPage({ params }: Props) {
-  setRequestLocale(params.locale);
-  return <LocationsClient />;
+/** 分店列表頁暫時隱藏（延吉店），保留路徑但一律轉回首頁 */
+export default function LocationsPage({ params }: Props) {
+  redirect({ href: "/", locale: params.locale });
 }

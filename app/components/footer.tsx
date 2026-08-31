@@ -66,11 +66,6 @@ export default async function Footer() {
                   {t("processApp")}
                 </Link>
               </li>
-              <li>
-                <Link href="/locations" className="text-inverse-on-surface/70 hover:text-inverse-on-surface text-sm transition-colors">
-                  {t("locationYanji")}
-                </Link>
-              </li>
             </ul>
           </div>
 

@@ -343,7 +343,6 @@ export default function Navigation() {
         <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-7 md:flex" aria-label="Main">
           {linkDesktop("/pricing", t("pricing"))}
           {linkDesktop("/process", t("process"))}
-          {linkDesktop("/locations", t("locations"))}
           {linkDesktop("/faq", t("faq"))}
           {/* 商務合作 dropdown */}
           <B2BDropdown t={t} pathname={pathname} />
@@ -409,7 +408,6 @@ export default function Navigation() {
             <nav className="flex flex-col gap-1 px-3 py-3 pb-5 overflow-y-auto max-h-[min(70vh,calc(100dvh-4.5rem))]" aria-label="Main">
               {linkMobile("/pricing", t("pricing"))}
               {linkMobile("/process", t("process"))}
-              {linkMobile("/locations", t("locations"))}
               {linkMobile("/faq", t("faq"))}
               {/* 商務合作 mobile sub-section */}
               <B2BMobileMenu t={t} pathname={pathname} onClose={closeMobile} />

@@ -222,11 +222,6 @@ export default async function Home({ params }: Props) {
                   </div>
                 ))}
               </div>
-              <div className="mt-10">
-                <Link href="/locations" className="inline-flex items-center gap-2 text-primary font-bold font-label text-sm hover:gap-3 transition-all">
-                  {t("storyLink")} <span className="material-symbols-outlined text-[18px]">arrow_forward</span>
-                </Link>
-              </div>
             </div>
           </div>
         </div>
