@@ -42,7 +42,7 @@ const zhTW = {
     privacy: "隱私權條款",
     terms: "服務條款",
     copyright:
-      "© 2026 Spark Space 星域智空間. All rights reserved. · 105臺北市松山區延吉街7-1號 B1",
+      "© 2026 Sparklands Tech CO., LTD.星域智慧科技股份有限公司. ALL RIGHTS RESERVED. · 110 台北市信義區信義路五段7號37樓",
   },
 } as const;
 
@@ -89,7 +89,7 @@ const zhCN = {
     privacy: "隐私条款",
     terms: "服务条款",
     copyright:
-      "© 2026 Spark Space 星域智空间. All rights reserved. · 105台北市松山区延吉街7-1号 B1",
+      "© 2026 Sparklands Tech CO., LTD.星域智慧科技股份有限公司. ALL RIGHTS RESERVED. · 110 台北市信义区信义路五段7号37楼",
   },
 } as const;
 
@@ -137,7 +137,7 @@ const en = {
     privacy: "Privacy",
     terms: "Terms of service",
     copyright:
-      "© 2026 Spark Space. All rights reserved. · B1, No. 7-1, Yanji St., Songshan Dist., Taipei 105",
+      "© 2026 Sparklands Tech CO., LTD. ALL RIGHTS RESERVED. · 37F, No. 7, Sec. 5, Xinyi Rd., Xinyi Dist., Taipei 110",
   },
 } as const;
 
