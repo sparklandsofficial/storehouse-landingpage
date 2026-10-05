@@ -7,6 +7,10 @@ const nextConfig = {
   async rewrites() {
     return [
       {
+        source: "/app/momentra",
+        destination: "/app/momentra/index.html",
+      },
+      {
         source: "/app/gamescope/support",
         destination: "/app/gamescope/support.html",
       },
